@@ -33,6 +33,22 @@ class HomePage extends Component
         $this->page = 2;
     }
 
+    public function pageTwoSave(){
+        $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'current_status' => 'required',
+            'school_name' => 'required_if:current_status,1',
+            'school_grade' =>'required_if:current_status,1',
+            'referral_method' => 'required_if:current_status,1',
+        ]);
+
+
+        $this->page = 3;
+    }
+
     public function save(){
         $this->validate([
             'first_name' => 'required|string',

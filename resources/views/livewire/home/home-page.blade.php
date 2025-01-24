@@ -177,7 +177,12 @@
 
                 </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow" x-show="page == 2" x-transition  x-cloak>
+            <div class="bg-white p-6 rounded-lg shadow" x-show="page == 2" x-transition:enter="transition-opacity transform ease-out duration-500"
+                    x-transition:enter-start="opacity-0 -translate-x-full"
+                    x-transition:enter-end="opacity-100 translate-x-0"
+                    x-transition:leave="transition-opacity transform ease-in duration-500 absolute inset-0"
+                    x-transition:leave-start="opacity-100 translate-x-0 "
+                    x-transition:leave-end="opacity-0 -translate-x-full"  x-cloak>
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">General Information</h2>
                 <div class="space-y-4">
                     <div class="w-full grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
@@ -241,6 +246,40 @@
                             @enderror
                         </div>
                         @endif
+                        <div class="flex justify-end">
+                            <button @click="$wire.pageTwoSave()" wire:loading.attr="disabled" class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
+                                Next
+                                <span class="loader" wire:loading></span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow" x-show="page == 3" x-transition  x-cloak>
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">General Information</h2>
+                <div class="space-y-4">
+                    <div class="w-full grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div class="col-span-2 sm:col-span-1">
+                            <label class="block text-sm font-medium text-gray-600 mb-1">First Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" wire:model="first_name"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            @error('first_name')
+                                <span class="text-red-500 text-xs">{{$message}} </span>
+                            @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-600 mb-1">Last Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" wire:model="last_name"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            @error('last_name')
+                                <span class="text-red-500 text-xs">{{$message}} </span>
+                            @enderror
+                        </div>
+                        
                         <div class="flex justify-end">
                             <button @click="$wire.save()" wire:loading.attr="disabled" class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
                                 Save
