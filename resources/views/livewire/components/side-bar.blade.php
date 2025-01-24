@@ -12,24 +12,19 @@
                 <path d="M20 16L12 20L4 16"></path>
             </svg>
         </a>
-
-
-
         <ul class="sidebar-nav">
             <li class="sidebar-item">
                 <a class='sidebar-link' href="{{route('dashboard')}}">
                     <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
-
             <li class="sidebar-header">
                 PAGES
             </li>
-
             <li class="sidebar-item">
-                <a class='sidebar-link' href=''>
-                    <i class="align-middle" data-feather="clock"></i>
-                    <span class="align-middle">Sessions</span>
+                <a class='sidebar-link' href="">
+                    <i class="align-middle" data-feather="target"></i> 
+                    <span class="align-middle">Specialities</span>
                 </a>
             </li>
             <li class="sidebar-item">
@@ -39,16 +34,21 @@
                 </a>
             </li>
             <li class="sidebar-item">
+                <a class='sidebar-link' href="{{route('session')}}">
+                    <i class="align-middle" data-feather="clock"></i>
+                    <span class="align-middle">Sessions</span>
+                </a>
+            </li>
+            
+            <li class="sidebar-item">
                 <a class='sidebar-link' href=''>
                     <i class="align-middle" data-feather="calendar"></i>
                     <span class="align-middle">Bookings</span>
                 </a>
             </li>
-
             <li class="sidebar-header">
                 GENERAL
             </li>
-
             <li class="sidebar-item">
                 <a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle" data-feather="bar-chart-2"></i>
@@ -59,18 +59,15 @@
                     <li class="sidebar-item"><a class='sidebar-link' href='dashboard-ecommerce.html'>Sessions Report</a></li>
                 </ul>
             </li>
-
             <li class="sidebar-header">
                 TOOLS
             </li>
-
             <li class="sidebar-item">
                 <a class='sidebar-link' href=''>
                     <i class="align-middle" data-feather="users"></i>
                     <span class="align-middle">Registered Users</span>
                 </a>
             </li>
-           
             <li class="sidebar-item">
                 <a class='sidebar-link' href=''>
                     <i class="align-middle" data-feather="settings"></i>
@@ -78,6 +75,5 @@
                 </a>
             </li>
         </ul>
-
     </div>
 </nav>
