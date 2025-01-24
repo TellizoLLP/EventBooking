@@ -26,6 +26,7 @@
                     <thead>
                         <tr>
                             <th>Course Name</th>
+                            <th>Type </th>
                             <th>Session </th>
                             <th>Time Slot</th>
                             <th>Seat Limit</th>
@@ -35,6 +36,23 @@
                     <tbody>
 
                         <tr>
+                            <td>Mircro Course</td>
+                            <td>How to build your portfolio</td>
+                            <td>Session 1</td>
+                            <td>10:00AM - 12:00PM </td>
+                            <td>40</td>
+                            <td>
+                                {{-- <a class="menu-link" href="{{ route('expenses.manage', $expense->id) }}"> --}}
+                                <i class="align-middle far fa-fw fa-edit fa-lg text-primary"></i>
+                                {{-- <a class="menu-link" wire:click.prevent="deleteExpense({{ $expense->id }})"> --}}
+                                <i class="align-middle fas fa-fw fa-trash fa-lg text-primary"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+
+                        <tr>
+                            <td>Speciality Course</td>
                             <td>Pharmacy</td>
                             <td>Session 1</td>
                             <td>10:00AM - 12:00PM </td>
