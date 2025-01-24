@@ -70,6 +70,7 @@
                     <span class="align-middle">Registered Users</span>
                 </a>
             </li>
+           
             <li class="sidebar-item">
                 <a class='sidebar-link' href=''>
                     <i class="align-middle" data-feather="settings"></i>
