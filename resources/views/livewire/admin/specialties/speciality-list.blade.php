@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
+                            <th class="text-green-500">Speciality</th>
                             <th>Room</th>
                             <th>Description</th>
                         </tr>

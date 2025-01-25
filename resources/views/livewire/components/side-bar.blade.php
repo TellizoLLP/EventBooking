@@ -24,7 +24,7 @@
             <li class="sidebar-item">
                 <a class='sidebar-link' href="{{route('speciality')}}">
                     <i class="align-middle" data-feather="target"></i> 
-                    <span class="align-middle">Specialities</span>
+                    <span class="align-middle">Medzone-Experience</span>
                 </a>
             </li>
             <li class="sidebar-item">
