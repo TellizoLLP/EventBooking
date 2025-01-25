@@ -363,11 +363,11 @@
                                 below</div>
                         </div>
                         <div class="flex gap-2">
-                            <button class="text-sm font-semibold text-neutral-500 bg-neutral-100 px-3 py-2 rounded-lg antialiased">Skip</button>
+                           
                             <div class="flex justify-end">
-                                <button @click="$wire.pageThreeSave()" wire:loading.attr="disabled"
+                                <button @click="$wire.save()" wire:loading.attr="disabled"
                                     class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
-                                    Next
+                                    Register
                                     <span class="loader" wire:loading></span>
                                 </button>
                             </div>
@@ -441,6 +441,95 @@
             </div>
         </div>
 
+
+        <div class="bg-white p-6 rounded-lg shadow" x-show="page == 5"
+                x-transition:enter="transition-opacity transform ease-out duration-500"
+                x-transition:enter-start="opacity-0 -translate-x-full"
+                x-transition:enter-end="opacity-100 translate-x-0"
+                x-transition:leave="transition-opacity transform ease-in duration-500 absolute inset-0"
+                x-transition:leave-start="opacity-100 translate-x-0 "
+                x-transition:leave-end="opacity-0 -translate-x-full" x-cloak>
+                <div class="">
+                    <div class="flex w-full justify-between items-center">
+                        <div class="flex flex-col">
+                            <h2 class="text-lg font-semibold text-gray-800 antialiased">Additional Sessions</h2>
+                            <div class="text-xs font-medium text-gray-600 mb-4 antialiased">You can any sessions
+                                below</div>
+                        </div>
+                        <div class="flex gap-2">
+                           
+                            <div class="flex justify-end">
+                                <button @click="$wire.save()" wire:loading.attr="disabled"
+                                    class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
+                                     Register
+                                    <span class="loader" wire:loading></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+
+                        <!-- <div class="flex gap-2 bg-gray-100 w-fit px-3 py-2 rounded-t-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-black" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M14 6v15H3v-2h2V3h9v1h5v15h2v2h-4V6zm-4 5v2h2v-2z" />
+                            </svg>
+                            <span>Time : 02:00 PM - 04:00PM</span>
+                        </div> -->
+                        <div class="flex bg-gray-100 p-2 py-3">
+                            <div class="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-2">
+
+                                @foreach ($Additionalrooms as $additionalRoomIndex => $additionalroom)
+                                @foreach ($additionalroom['sessions'] as $additionalSession)
+                                <div
+                                    class="session-card 
+            {{ isset($selectedAdditionalSessions[$additionalRoomIndex]) && $selectedAdditionalSessions[$additionalRoomIndex] == $additionalSession['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }} 
+            w-full rounded-lg shadow p-4"
+                                    wire:click="selectAdditionalSession({{ $additionalRoomIndex }}, {{ $additionalSession['id'] }})"
+                                    style="transition: background-color 0.3s;">
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <div>
+                                                <p class="text-neutral-800 font-semibold">{{ $additionalSession['name'] }}</p>
+                                                <p class="text-sm text-neutral-800">{{ $additionalroom['roomName'] }}</p>
+                                                <span class="text-xs text-neutral-800">({{ $additionalSession['session'] }})</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-between items-center text-sm text-neutral-800 mt-2">
+                                        <div class="flex items-center gap-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-neutral-800" viewBox="0 0 512 512">
+                                                <path fill="currentColor"
+                                                    d="M459.15 269.75a133.197 133.197 0 0 1-55.862 179.975l-42.782 22.541l-10.52 5.533a71.28 71.28 0 0 1-62.966 1.685l-167.077-71.38l15.733-46.676l99.363 19.194l-51.458-97.78l-82.843-157.411l40.357-21.232l82.844 157.457l19.934-10.485l-36.521-69.445l40.335-21.22l36.52 69.445l19.935-10.485l-28.2-53.598l40.358-21.232l28.2 53.598l19.945-10.576l-19.354-36.886l40.346-21.174l19.354 36.885l54.348 103.301zM73.268 146.674a60.03 60.03 0 0 1 42.361-102.459a60.098 60.098 0 0 1 56.58 80.169l10.588 20.013A78.29 78.29 0 0 0 115.708 26a78.233 78.233 0 0 0-5.635 156.262L99.428 162.02a59.7 59.7 0 0 1-26.16-15.346" />
+                                            </svg>
+                                            <p>Click to select</p>
+                                        </div>
+                                        <div class="flex items-center gap-1 text-neutral-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M4 18v3h3v-3h10v3h3v-6H4zm15-8h3v3h-3zM2 10h3v3H2zm15 3H7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2z" />
+                                            </svg>
+                                          
+                                            <p>{{ "No Seats Limit" }}</p>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        
         <div class="bg-white p-6 rounded-lg shadow" x-show="page == 4" x-transition x-cloak>
             <h2 class="text-lg font-semibold text-gray-800 mb-4">General Information</h2>
             <div class="space-y-4">

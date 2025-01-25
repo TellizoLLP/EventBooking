@@ -14,6 +14,7 @@ class HomePage extends Component
     public $current_status = 1, $first_name, $last_name, $email, $phone, $school_name, $school_grade, $referral_method, $page = 1;
     public $selectedSessions = [];
     public $selectedMainSessions = [];
+    public $selectedAdditionalSessions = [];
     public $disabledTimeSlots = [];
 
     public $rooms = [
@@ -311,6 +312,52 @@ class HomePage extends Component
             ],
         ],
     ];
+
+
+    public $Additionalrooms = [
+        [
+            'roomName' => 'Main auditorium',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => "Parents’ workshop",
+                    'session' => "Parents’ workshop",
+                    'start_time' => '11:00 am',
+                    'end_time' => '12:00 pm',
+                    'clickable' => true,
+                    'slots' => '0',
+                ],  
+            ],
+        ],
+        [
+            'roomName' => 'Main auditorium',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'Environmental Health:',
+                    'session' => 'Water Sustainability in Kuwait',
+                    'start_time' => '1:00 pm',
+                    'end_time' => '2:00 pm',
+                    'clickable' => true,
+                    'slots' => '40',
+                ],
+            ],
+        ],
+        [
+            'roomName' => 'Main auditorium',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'Sports Health',
+                    'session' => 'Sports Health',
+                    'start_time' => '4:00 pm',
+                    'end_time' => '5:00 pm',
+                    'clickable' => true,
+                    'slots' => '40',
+                ],
+            ],
+        ],
+    ];
     #[Layout('components.layouts.home-layout')]
     public function render()
     {
@@ -333,7 +380,7 @@ class HomePage extends Component
         if ($this->current_status == 1) {
             $this->page = 2;
         } else {
-            $this->page = 3;
+            $this->page = 5;
         }
     }
 
@@ -391,10 +438,14 @@ class HomePage extends Component
         $eventRegistration->email = $this->email;
         $eventRegistration->phone = $this->phone;
         $eventRegistration->current_status = $this->current_status;
+        if($this->current_status==1) {
         $eventRegistration->school_name = $this->school_name;
         $eventRegistration->school_grade = $this->school_grade;
+        }
         $eventRegistration->referral_method = $this->referral_method;
         $eventRegistration->save();
+
+        if($this->current_status==1) {
 
         foreach ($this->selectedSessions as $roomIndex => $sessionId) {
             // Ensure the session ID exists before saving
@@ -439,7 +490,31 @@ class HomePage extends Component
                 }
             }
         }
+    }
 
+    if($this->current_status==2) {
+        foreach ($this->selectedAdditionalSessions as $roomIndex => $sessionId) {
+            // Ensure the session ID exists before saving
+            if ($sessionId) {
+                // Get the selected session from the sessions array
+                $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+
+                // Ensure that the session exists
+                if ($selectedSession) {
+                    // Create the event registration session
+                    EventRegistrationSession::create([
+                        'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
+                        'course_id' => 3, // Assuming this is set in your class
+                        'room_id' => $roomIndex, // Use room index or adjust based on your structure
+                        'session_id' => $sessionId, // Selected session ID
+                    ]);
+                } else {
+                    // Handle case where the session is not found in the room
+                    Log::error("Session with ID {$sessionId} not found in Room {$roomIndex}");
+                }
+            }
+        }
+    }
         $this->reset();
         try {
             Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));
@@ -525,5 +600,10 @@ class HomePage extends Component
     {
         $this->selectedMainSessions = [];
         $this->selectedMainSessions[$roomIndex] = $sessionId;
+    }
+    public function selectAdditionalSession($roomIndex, $sessionId)
+    {
+        $this->selectedAdditionalSessions = [];
+        $this->selectedAdditionalSessions[$roomIndex] = $sessionId;
     }
 }
