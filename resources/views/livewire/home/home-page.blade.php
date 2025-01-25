@@ -282,7 +282,7 @@
                                     </div>
 
                                     <!-- Time Info -->
-                                    <div class="my-4 border-t border-gray-200 pt-4">
+                                    <div class="my-4 border-t border-gray-200/30 pt-4">
                                         <div class="flex justify-between items-center">
                                             <div>
                                                 <p class="text-sm font-bold ">
