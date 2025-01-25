@@ -187,8 +187,8 @@
 
 
                     @foreach ($rooms as $roomIndex => $room)
-                    <div>
-                        <div class="flex gap-2 bg-gray-100 w-fit px-3 py-2 rounded-t-lg">
+                    <div class="">
+                        <div class="flex gap-2 bg-gray-100 w-fit px-3 py-2 rounded-t-lg mt-3.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-black" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M14 6v15H3v-2h2V3h9v1h5v15h2v2h-4V6zm-4 5v2h2v-2z" />
                             </svg>
