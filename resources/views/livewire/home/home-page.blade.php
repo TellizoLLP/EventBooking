@@ -87,7 +87,7 @@
                             <span class="text-red-500 text-xs">{{$message}} </span>
                             @enderror
                         </div>
-                   
+
                         <div class=""></div>
                         <div class="">
                             <label class="block text-sm font-medium text-gray-600 mb-1">School Name <span
@@ -134,7 +134,6 @@
                         <div class="flex justify-end">
                             <button @click="$wire.pageOneSave()" class="px-5 py-2.5 h-fit  cursor-pointer text-sm antialiased font-semibold bg-[#285a49] text-white rounded-lg">
                                 Next
-
                             </button>
                         </div>
                     </div>
@@ -187,7 +186,7 @@
 
 
 
-                    @foreach($rooms as $room)
+                    @foreach ($rooms as $roomIndex => $room)
                     <div>
                         <div class="flex gap-2 bg-gray-100 w-fit px-3 py-2 rounded-t-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-black" viewBox="0 0 24 24">
@@ -200,7 +199,15 @@
                             <div class="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
                                 @foreach ($room['sessions'] as $session)
                                 <!-- <div class="w-full bg-{{ $session['clickable'] ? '[#285a49]' : 'white' }} rounded-lg shadow p-4"> -->
-                                <div class="w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4">
+                                <!-- <div class="w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4"> -->
+                                <div
+                                class="session {{ $session['clickable'] ? '' : 'opacity-50 cursor-not-allowed' }} 
+                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-blue-500' : '' }}
+                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] !== $session['id'] ? 'bg-red-500' : '' }}
+                            w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4"
+                        wire:click="selectSession({{ $roomIndex }}, {{ $session['id'] }})">
+
+
                                     <!-- Session Info -->
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
