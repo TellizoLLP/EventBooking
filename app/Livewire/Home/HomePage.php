@@ -564,6 +564,10 @@ class HomePage extends Component
 
     public function selectSession($roomIndex, $sessionId)
     {
+        $slots = getFilledSlotsMain($roomIndex, $sessionId);
+        if($slots['filled'] >= 40) {
+            return;
+        } else {
         // Find the selected session details
         $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
 
@@ -596,10 +600,16 @@ class HomePage extends Component
         $this->selectedSessions[$roomIndex] = $sessionId;
         $this->disabledTimeSlots[] = $selectedSession['start_time'];
     }
+    }
     public function selectMainSession($roomIndex, $sessionId)
     {
+        $slots = getFilledSlotsMain($roomIndex, $sessionId);
+        if($slots['filled'] >= 40) {
+            return;
+        } else {
         $this->selectedMainSessions = [];
         $this->selectedMainSessions[$roomIndex] = $sessionId;
+        }
     }
     public function selectAdditionalSession($roomIndex, $sessionId)
     {
