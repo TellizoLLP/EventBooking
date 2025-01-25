@@ -12,7 +12,7 @@ class HomePage extends Component
 {
     public $current_status = 1,$first_name,$last_name,$email,$phone,$school_name,$school_grade,$referral_method,$page = 1;
     public $selectedSessions = []; 
-
+    public $disabledTimeSlots = [];
 
     public $rooms = [
         [
@@ -298,19 +298,40 @@ dd($this->selectedSessions);
     }
 
     public function selectSession($roomIndex, $sessionId)
-{
-    // If the selected session is the same as the current one, deselect it
-    if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] == $sessionId) {
-        unset($this->selectedSessions[$roomIndex]);
-    } else {
-        // Otherwise, select the new session
-        if (count($this->selectedSessions) >= 3) {
-            array_pop($this->selectedSessions);
+    {
+       
+        $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+    
+       
+        if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
+           
+            return; 
         }
+    
+       
+        if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] == $sessionId) {
+            unset($this->selectedSessions[$roomIndex]);
+    
+        
+            $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$selectedSession['start_time']]);
+        } else {
+            
+            if (count($this->selectedSessions) >= 3) {
+               
 
-        $this->selectedSessions[$roomIndex] = $sessionId;
+                $removedSession = array_pop($this->selectedSessions);
+    
+               
+                $removedSessionStartTime = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $removedSession)['start_time'];
+                $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
+
+            }
+    
+          
+            $this->selectedSessions[$roomIndex] = $sessionId;
+
+            $this->disabledTimeSlots[] = $selectedSession['start_time'];
+        }
     }
-
-}
 
 }
