@@ -28,7 +28,7 @@ class HomePage extends Component
                     'start_time' => '11:00 am',
                     'end_time' => '12:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 2,
@@ -38,7 +38,7 @@ class HomePage extends Component
                     'start_time' => '12:00 pm',
                     'end_time' => '01:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 3,
@@ -48,7 +48,7 @@ class HomePage extends Component
                     'start_time' => '4:00 pm',
                     'end_time' => '5:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 4,
@@ -58,7 +58,7 @@ class HomePage extends Component
                     'start_time' => '5:00 pm',
                     'end_time' => '6:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
         ],
@@ -73,7 +73,7 @@ class HomePage extends Component
                     'start_time' => '11:00 am',
                     'end_time' => '12:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 2,
@@ -83,7 +83,7 @@ class HomePage extends Component
                     'start_time' => '12:00 pm',
                     'end_time' => '01:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 3,
@@ -93,7 +93,7 @@ class HomePage extends Component
                     'start_time' => '4:00 pm',
                     'end_time' => '5:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 4,
@@ -103,7 +103,7 @@ class HomePage extends Component
                     'start_time' => '5:00 pm',
                     'end_time' => '6:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
         ],
@@ -118,7 +118,7 @@ class HomePage extends Component
                     'start_time' => '11:00 am',
                     'end_time' => '12:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 2,
@@ -128,7 +128,7 @@ class HomePage extends Component
                     'start_time' => '12:00 pm',
                     'end_time' => '01:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 3,
@@ -138,7 +138,7 @@ class HomePage extends Component
                     'start_time' => '4:00 pm',
                     'end_time' => '5:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 4,
@@ -148,7 +148,7 @@ class HomePage extends Component
                     'start_time' => '5:00 pm',
                     'end_time' => '6:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
 
@@ -164,7 +164,7 @@ class HomePage extends Component
                     'start_time' => '11:00 am',
                     'end_time' => '12:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 2,
@@ -174,7 +174,7 @@ class HomePage extends Component
                     'start_time' => '12:00 pm',
                     'end_time' => '01:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 3,
@@ -184,7 +184,7 @@ class HomePage extends Component
                     'start_time' => '4:00 pm',
                     'end_time' => '5:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 4,
@@ -194,7 +194,7 @@ class HomePage extends Component
                     'start_time' => '5:00 pm',
                     'end_time' => '6:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
 
@@ -210,7 +210,7 @@ class HomePage extends Component
                     'start_time' => '11:00 am',
                     'end_time' => '12:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 2,
@@ -220,7 +220,7 @@ class HomePage extends Component
                     'start_time' => '12:00 pm',
                     'end_time' => '01:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 3,
@@ -230,7 +230,7 @@ class HomePage extends Component
                     'start_time' => '4:00 pm',
                     'end_time' => '5:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
                 [
                     'id' => 4,
@@ -240,7 +240,7 @@ class HomePage extends Component
                     'start_time' => '5:00 pm',
                     'end_time' => '6:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
 
@@ -261,7 +261,7 @@ class HomePage extends Component
                     'start_time' => '2:00 am',
                     'end_time' => '4:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
         ],
@@ -276,7 +276,7 @@ class HomePage extends Component
                     'start_time' => '2:00 am',
                     'end_time' => '4:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
         ],
@@ -291,7 +291,7 @@ class HomePage extends Component
                     'start_time' => '2:00 am',
                     'end_time' => '4:00 pm',
                     'clickable' => true,
-                    'slots' => 'No Seats Limit',
+                    'slots' => '0',
                 ],
             ],
         ],
@@ -306,7 +306,7 @@ class HomePage extends Component
                     'start_time' => '2:00 am',
                     'end_time' => '4:00 pm',
                     'clickable' => true,
-                    'slots' => '40/40',
+                    'slots' => '40',
                 ],
             ],
         ],
@@ -368,6 +368,8 @@ class HomePage extends Component
 
         $this->page = 4;
     }
+
+   
 
     public function save()
     {
