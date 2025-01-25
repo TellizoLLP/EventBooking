@@ -12,6 +12,7 @@ class HomePage extends Component
 {
     public $current_status = 1,$first_name,$last_name,$email,$phone,$school_name,$school_grade,$referral_method,$page = 1;
     public $selectedSessions = []; 
+    public $selectedMainSessions = []; 
     public $disabledTimeSlots = [];
 
     public $rooms = [
@@ -226,6 +227,70 @@ class HomePage extends Component
         ],
     ];
 
+
+
+    public $Mainrooms = [
+        [
+            'roomName' => 'Room 4',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'How to build your portfolio',
+                    'session' => 'English Session',
+                    'duration' => '2 hours',
+                    'start_time' => '2:00 am',
+                    'end_time' => '4:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+        ],
+            [
+            'roomName' => 'Room 6',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'First aid emergency response',
+                    'session' => 'Arabic & English Session',
+                    'duration' => '2 hours',
+                    'start_time' => '2:00 am',
+                    'end_time' => '4:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+        ],
+        [
+            'roomName' => 'Main Auditorium',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'Use of AI in learning',
+                    'session' => 'Arabic Session',
+                    'duration' => '2 hours',
+                    'start_time' => '2:00 am',
+                    'end_time' => '4:00 pm',
+                    'clickable' => true,
+                    'slots' => 'No Seats Limit',
+                ],
+            ],
+        ],
+        [
+            'roomName' => 'Room 5',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'Energy management',
+                    'session' => 'Arabic Session',
+                    'duration' => '2 hours',
+                    'start_time' => '2:00 am',
+                    'end_time' => '4:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+        ],
+    ];
     #[Layout('components.layouts.home-layout')]
     public function render()
     {
@@ -382,5 +447,12 @@ class HomePage extends Component
     // Add the new session to the selectedSessions and disable its time slot
     $this->selectedSessions[$roomIndex] = $sessionId;
     $this->disabledTimeSlots[] = $selectedSession['start_time'];
+}
+public function selectMainSession($roomIndex, $sessionId)
+{
+    $this->selectedMainSessions = []; 
+    $this->selectedMainSessions[$roomIndex] = $sessionId;
+    dd($this->selectedSessions);
+
 }
 }
