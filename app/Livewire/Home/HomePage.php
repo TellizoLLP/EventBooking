@@ -11,9 +11,9 @@ use Livewire\Component;
 
 class HomePage extends Component
 {
-    public $current_status = 1,$first_name,$last_name,$email,$phone,$school_name,$school_grade,$referral_method,$page = 1;
-    public $selectedSessions = []; 
-    public $selectedMainSessions = []; 
+    public $current_status = 1, $first_name, $last_name, $email, $phone, $school_name, $school_grade, $referral_method, $page = 1;
+    public $selectedSessions = [];
+    public $selectedMainSessions = [];
     public $disabledTimeSlots = [];
 
     public $rooms = [
@@ -30,7 +30,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 2,
+                [
+                    'id' => 2,
                     'name' => 'Medicine',
                     'session' => 'Session 2',
                     'duration' => '1 hour',
@@ -39,7 +40,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 3,
+                [
+                    'id' => 3,
                     'name' => 'Medicine',
                     'session' => 'Session 3',
                     'duration' => '1 hour',
@@ -48,7 +50,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 4,
+                [
+                    'id' => 4,
                     'name' => 'Medicine',
                     'session' => 'Session 4',
                     'duration' => '1 hour',
@@ -62,7 +65,8 @@ class HomePage extends Component
         [
             'roomName' => 'Studio 7',
             'sessions' => [
-                ['id' => 1,
+                [
+                    'id' => 1,
                     'name' => 'Pharmacy',
                     'session' => 'Session 1',
                     'duration' => '1 hour',
@@ -71,7 +75,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 2,
+                [
+                    'id' => 2,
                     'name' => 'Pharmacy',
                     'session' => 'Session 2',
                     'duration' => '1 hour',
@@ -80,7 +85,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 3,
+                [
+                    'id' => 3,
                     'name' => 'Pharmacy',
                     'session' => 'Session 3',
                     'duration' => '1 hour',
@@ -89,7 +95,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 4,
+                [
+                    'id' => 4,
                     'name' => 'Pharmacy',
                     'session' => 'Session 4',
                     'duration' => '1 hour',
@@ -103,7 +110,8 @@ class HomePage extends Component
         [
             'roomName' => 'Room 4',
             'sessions' => [
-                ['id' => 1,
+                [
+                    'id' => 1,
                     'name' => 'Dentistry',
                     'session' => 'Session 1',
                     'duration' => '1 hour',
@@ -112,7 +120,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 2,
+                [
+                    'id' => 2,
                     'name' => 'Dentistry',
                     'session' => 'Session 2',
                     'duration' => '1 hour',
@@ -121,7 +130,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 3,
+                [
+                    'id' => 3,
                     'name' => 'Dentistry',
                     'session' => 'Session 3',
                     'duration' => '1 hour',
@@ -130,7 +140,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 4,
+                [
+                    'id' => 4,
                     'name' => 'Dentistry',
                     'session' => 'Session 4',
                     'duration' => '1 hour',
@@ -140,12 +151,13 @@ class HomePage extends Component
                     'slots' => '40/40',
                 ],
             ],
-            
+
         ],
         [
             'roomName' => 'Room 5',
             'sessions' => [
-                ['id' => 1,
+                [
+                    'id' => 1,
                     'name' => 'Allied Health',
                     'session' => 'Session 1',
                     'duration' => '1 hour',
@@ -154,7 +166,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 2,
+                [
+                    'id' => 2,
                     'name' => 'Allied Health',
                     'session' => 'Session 2',
                     'duration' => '1 hour',
@@ -163,7 +176,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 3,
+                [
+                    'id' => 3,
                     'name' => 'Allied Health',
                     'session' => 'Session 3',
                     'duration' => '1 hour',
@@ -172,7 +186,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 4,
+                [
+                    'id' => 4,
                     'name' => 'Allied Health',
                     'session' => 'Session 4',
                     'duration' => '1 hour',
@@ -182,12 +197,13 @@ class HomePage extends Component
                     'slots' => '40/40',
                 ],
             ],
-            
+
         ],
         [
             'roomName' => 'Studio 3',
             'sessions' => [
-                ['id' => 1,
+                [
+                    'id' => 1,
                     'name' => 'Veterinary Sciences',
                     'session' => 'Session 1',
                     'duration' => '1 hour',
@@ -196,7 +212,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 2,
+                [
+                    'id' => 2,
                     'name' => 'Veterinary Sciences',
                     'session' => 'Session 2',
                     'duration' => '1 hour',
@@ -205,7 +222,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 3,
+                [
+                    'id' => 3,
                     'name' => 'Veterinary Sciences',
                     'session' => 'Session 3',
                     'duration' => '1 hour',
@@ -214,7 +232,8 @@ class HomePage extends Component
                     'clickable' => true,
                     'slots' => '40/40',
                 ],
-                ['id' => 4,
+                [
+                    'id' => 4,
                     'name' => 'Veterinary Sciences',
                     'session' => 'Session 4',
                     'duration' => '1 hour',
@@ -224,7 +243,7 @@ class HomePage extends Component
                     'slots' => '40/40',
                 ],
             ],
-            
+
         ],
     ];
 
@@ -246,7 +265,7 @@ class HomePage extends Component
                 ],
             ],
         ],
-            [
+        [
             'roomName' => 'Room 6',
             'sessions' => [
                 [
@@ -298,7 +317,8 @@ class HomePage extends Component
         return view('livewire.home.home-page');
     }
 
-    public function pageOneSave(){
+    public function pageOneSave()
+    {
         // $this->validate([
         //     'first_name' => 'required|string',
         //     'last_name' => 'required|string',
@@ -310,11 +330,15 @@ class HomePage extends Component
         //     'referral_method' => 'required_if:current_status,1',
         // ]);
 
-
-        $this->page = 2;
+        if ($this->current_status == 1) {
+            $this->page = 2;
+        } else {
+            $this->page = 3;
+        }
     }
 
-    public function pageTwoSave(){
+    public function pageTwoSave()
+    {
         // $this->validate([
         //     'first_name' => 'required|string',
         //     'last_name' => 'required|string',
@@ -329,7 +353,8 @@ class HomePage extends Component
         $this->page = 3;
     }
 
-    public function pageThreeSave(){
+    public function pageThreeSave()
+    {
         // $this->validate([
         //     'first_name' => 'required|string',
         //     'last_name' => 'required|string',
@@ -344,7 +369,8 @@ class HomePage extends Component
         $this->page = 4;
     }
 
-    public function save(){
+    public function save()
+    {
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -352,11 +378,11 @@ class HomePage extends Component
             'phone' => 'required|string',
             'current_status' => 'required',
             'school_name' => 'required_if:current_status,1',
-            'school_grade' =>'required_if:current_status,1',
+            'school_grade' => 'required_if:current_status,1',
             'referral_method' => 'required_if:current_status,1',
         ]);
 
-       
+
         $eventRegistration = new EventRegistration();
         $eventRegistration->first_name = $this->first_name;
         $eventRegistration->last_name = $this->last_name;
@@ -373,7 +399,7 @@ class HomePage extends Component
             if ($sessionId) {
                 // Get the selected session from the sessions array
                 $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
-        
+
                 // Ensure that the session exists
                 if ($selectedSession) {
                     // Create the event registration session
@@ -395,7 +421,7 @@ class HomePage extends Component
             if ($sessionId) {
                 // Get the selected session from the sessions array
                 $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
-        
+
                 // Ensure that the session exists
                 if ($selectedSession) {
                     // Create the event registration session
@@ -413,46 +439,45 @@ class HomePage extends Component
         }
 
         $this->reset();
-        try{
+        try {
             Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
-        }   
-        return redirect()->route('page-1',['id' => $eventRegistration->id]);
+        }
+        return redirect()->route('page-1', ['id' => $eventRegistration->id]);
     }
 
     // public function selectSession($roomIndex, $sessionId)
     // {
-       
+
     //     $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
-    
-       
+
+
     //     if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
-           
+
     //         return; 
     //     }
-    
-       
+
+
     //     if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] == $sessionId) {
     //         unset($this->selectedSessions[$roomIndex]);
-    
-        
+
+
     //         $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$selectedSession['start_time']]);
     //     } else {
-            
+
     //         if (count($this->selectedSessions) >= 3) {
-               
+
     //             if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] == $sessionId) {
-                    
+
     //             } else {
     //             $removedSession = array_pop($this->selectedSessions);
     //             $removedSessionStartTime = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $removedSession)['start_time'];
     //             $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
     //             }
     //         }
-    
-          
+
+
     //         $this->selectedSessions[$roomIndex] = $sessionId;
 
     //         $this->disabledTimeSlots[] = $selectedSession['start_time'];
@@ -461,42 +486,42 @@ class HomePage extends Component
 
 
     public function selectSession($roomIndex, $sessionId)
-{
-    // Find the selected session details
-    $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+    {
+        // Find the selected session details
+        $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
 
-    // If the session's start_time is already disabled, do nothing
-    if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
-        return;
-    }
+        // If the session's start_time is already disabled, do nothing
+        if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
+            return;
+        }
 
-    // Check if the room already has a selected session
-    if (isset($this->selectedSessions[$roomIndex])) {
-        // Remove the current session's start_time from disabledTimeSlots
-        $currentSessionId = $this->selectedSessions[$roomIndex];
-        $currentSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $currentSessionId);
-        $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$currentSession['start_time']]);
-    }
+        // Check if the room already has a selected session
+        if (isset($this->selectedSessions[$roomIndex])) {
+            // Remove the current session's start_time from disabledTimeSlots
+            $currentSessionId = $this->selectedSessions[$roomIndex];
+            $currentSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $currentSessionId);
+            $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$currentSession['start_time']]);
+        }
 
-    // If the total selected sessions exceed the limit, remove the oldest selected session
-    if (count($this->selectedSessions) >= 3) {
-        // Remove the oldest session and its start_time
-         if (!isset($this->selectedSessions[$roomIndex])) {
-        $removedSessionId =  array_pop($this->selectedSessions);
-        $removedSessionStartTime = collect($this->rooms)->flatMap(function ($room) {
-            return $room['sessions'];
-        })->firstWhere('id', $removedSessionId)['start_time'];
-        $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
-    }
-    }
+        // If the total selected sessions exceed the limit, remove the oldest selected session
+        if (count($this->selectedSessions) >= 3) {
+            // Remove the oldest session and its start_time
+            if (!isset($this->selectedSessions[$roomIndex])) {
+                $removedSessionId =  array_pop($this->selectedSessions);
+                $removedSessionStartTime = collect($this->rooms)->flatMap(function ($room) {
+                    return $room['sessions'];
+                })->firstWhere('id', $removedSessionId)['start_time'];
+                $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
+            }
+        }
 
-    // Add the new session to the selectedSessions and disable its time slot
-    $this->selectedSessions[$roomIndex] = $sessionId;
-    $this->disabledTimeSlots[] = $selectedSession['start_time'];
-}
-public function selectMainSession($roomIndex, $sessionId)
-{
-    $this->selectedMainSessions = []; 
-    $this->selectedMainSessions[$roomIndex] = $sessionId;
-}
+        // Add the new session to the selectedSessions and disable its time slot
+        $this->selectedSessions[$roomIndex] = $sessionId;
+        $this->disabledTimeSlots[] = $selectedSession['start_time'];
+    }
+    public function selectMainSession($roomIndex, $sessionId)
+    {
+        $this->selectedMainSessions = [];
+        $this->selectedMainSessions[$roomIndex] = $sessionId;
+    }
 }

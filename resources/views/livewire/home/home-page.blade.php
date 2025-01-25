@@ -89,6 +89,7 @@
                         </div>
 
                         <div class=""></div>
+                        @if($current_status==1)
                         <div class="">
                             <label class="block text-sm font-medium text-gray-600 mb-1">School Name <span
                                     class="text-red-500">*</span></label>
@@ -114,6 +115,7 @@
                             <span class="text-red-500 text-xs">{{$message}} </span>
                             @enderror
                         </div>
+                        @endif
                         <div class="">
                             <label class="block text-sm font-medium text-gray-600 mb-1">How did you hear about us? <span
                                     class="text-red-500">*</span></label>
