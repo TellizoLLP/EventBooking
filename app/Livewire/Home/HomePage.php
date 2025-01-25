@@ -11,7 +11,7 @@ use Livewire\Component;
 class HomePage extends Component
 {
     public $current_status = 1,$first_name,$last_name,$email,$phone,$school_name,$school_grade,$referral_method,$page = 1;
-
+    public $selectedSessions = []; 
 
 
     public $rooms = [
@@ -33,7 +33,7 @@ class HomePage extends Component
                     'duration' => '1 hour',
                     'start_time' => '12:00 pm',
                     'end_time' => '01:00 pm',
-                    'clickable' => true,
+                    'clickable' => false,
                     'slots' => '40/40',
                 ],
                 [
@@ -248,16 +248,16 @@ class HomePage extends Component
     }
 
     public function pageTwoSave(){
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' =>'required_if:current_status,1',
-            'referral_method' => 'required_if:current_status,1',
-        ]);
+        // $this->validate([
+        //     'first_name' => 'required|string',
+        //     'last_name' => 'required|string',
+        //     'email' => 'required|email',
+        //     'phone' => 'required|string',
+        //     'current_status' => 'required',
+        //     'school_name' => 'required_if:current_status,1',
+        //     'school_grade' =>'required_if:current_status,1',
+        //     'referral_method' => 'required_if:current_status,1',
+        // ]);
 
 
         $this->page = 3;
