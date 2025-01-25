@@ -319,16 +319,16 @@ class HomePage extends Component
 
     public function pageOneSave()
     {
-        // $this->validate([
-        //     'first_name' => 'required|string',
-        //     'last_name' => 'required|string',
-        //     'email' => 'required|email',
-        //     'phone' => 'required|string',
-        //     'current_status' => 'required',
-        //     'school_name' => 'required_if:current_status,1',
-        //     'school_grade' =>'required_if:current_status,1',
-        //     'referral_method' => 'required_if:current_status,1',
-        // ]);
+        $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'current_status' => 'required',
+            'school_name' => 'required_if:current_status,1',
+            'school_grade' => 'required_if:current_status,1',
+            'referral_method' => 'required',
+        ]);
 
         if ($this->current_status == 1) {
             $this->page = 2;
@@ -339,32 +339,32 @@ class HomePage extends Component
 
     public function pageTwoSave()
     {
-        // $this->validate([
-        //     'first_name' => 'required|string',
-        //     'last_name' => 'required|string',
-        //     'email' => 'required|email',
-        //     'phone' => 'required|string',
-        //     'current_status' => 'required',
-        //     'school_name' => 'required_if:current_status,1',
-        //     'school_grade' =>'required_if:current_status,1',
-        //     'referral_method' => 'required_if:current_status,1',
-        // ]);
+        $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'current_status' => 'required',
+            'school_name' => 'required_if:current_status,1',
+            'school_grade' => 'required_if:current_status,1',
+            'referral_method' => 'required',
+        ]);
 
         $this->page = 3;
     }
 
     public function pageThreeSave()
     {
-        // $this->validate([
-        //     'first_name' => 'required|string',
-        //     'last_name' => 'required|string',
-        //     'email' => 'required|email',
-        //     'phone' => 'required|string',
-        //     'current_status' => 'required',
-        //     'school_name' => 'required_if:current_status,1',
-        //     'school_grade' =>'required_if:current_status,1',
-        //     'referral_method' => 'required_if:current_status,1',
-        // ]);
+        $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'current_status' => 'required',
+            'school_name' => 'required_if:current_status,1',
+            'school_grade' => 'required_if:current_status,1',
+            'referral_method' => 'required',
+        ]);
 
         $this->page = 4;
     }
@@ -381,7 +381,7 @@ class HomePage extends Component
             'current_status' => 'required',
             'school_name' => 'required_if:current_status,1',
             'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required_if:current_status,1',
+            'referral_method' => 'required',
         ]);
 
 
