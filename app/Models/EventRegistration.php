@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class EventRegistration extends Model
 {
     use HasFactory;
+
+    public function eventRegistrationSessions()
+    {
+        return $this->hasMany(EventRegistrationSession::class, 'event_registration_id');
+    }
 }

@@ -187,9 +187,6 @@
                     </div>
                 </div>
                 <div class="flex flex-col">
-
-
-
                     @foreach ($rooms as $roomIndex => $room)
                     <div class="">
                         <div class="flex gap-2 bg-gray-100 w-fit px-3 py-2 rounded-t-lg mt-3.5">
@@ -540,56 +537,172 @@
         </div>
     </div>
 
-    <div class="bg-white p-6 rounded-lg shadow" x-show="page == 4" x-transition x-cloak>
-        <h2 class="text-lg font-semibold text-gray-800 mb-4">General Information</h2>
-        <div class="space-y-4">
-            <div class="w-full grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
-                <div class="col-span-2 sm:col-span-1">
-                    <label class="block text-sm font-medium text-gray-600 mb-1">First Name <span
-                            class="text-red-500">*</span></label>
-                    <input type="text" wire:model="first_name"
-                        class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    @error('first_name')
-                    <span class="text-red-500 text-xs">{{ $message }} </span>
-                    @enderror
-                </div>
-                <div class="col-span-1">
-                    <label class="block text-sm font-medium text-gray-600 mb-1">Last Name <span
-                            class="text-red-500">*</span></label>
-                    <input type="text" wire:model="last_name"
-                        class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    @error('last_name')
-                    <span class="text-red-500 text-xs">{{ $message }} </span>
-                    @enderror
-                </div>
 
-                <div class="flex justify-end">
-                    <button @click="$wire.save()" wire:loading.attr="disabled"
-                        class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
-                        Register
-                        <span class="loader" wire:loading></span>
-                    </button>
-                </div>
+    <div class="bg-white p-6 rounded-lg shadow" x-show="page == 4"
+    x-transition:enter="transition-opacity transform ease-out duration-500"
+    x-transition:enter-start="opacity-0 -translate-x-full"
+    x-transition:enter-end="opacity-100 translate-x-0"
+    x-transition:leave="transition-opacity transform ease-in duration-500 absolute inset-0"
+    x-transition:leave-start="opacity-100 translate-x-0"
+    x-transition:leave-end="opacity-0 -translate-x-full" x-cloak>
+    <div>
+        <div class="flex w-full justify-between items-center">
+            <h2 class="text-lg font-semibold text-green-800 mb-4">Registration Successful</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="col-span-2 sm:col-span-1">
+                <label class="block text-sm font-medium text-gray-600 mb-1">First Name</label>
+                {{$first_name}}
+            </div>
+            <div class="col-span-1">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Last Name</label>
+                {{$last_name}}
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
+                {{$email}}
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Phone</label>
+                {{$phone}}
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Referral Method</label>
+                {{$referral_method}}
             </div>
 
+            @if($current_status == 1)
+            <div class="col-span-2 sm:col-span-1">
+                <label class="block text-sm font-medium text-gray-600 mb-1">School Name</label>
+                {{$school_name}}
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+                <label class="block text-sm font-medium text-gray-600 mb-1">School Grade</label>
+                {{$school_grade}}
+            </div>
+            @endif
+
+            @php
+                $items = \App\Models\EventRegistrationSession::where('event_registration_id', $current_registration_id)
+                    ->where('course_id', 1)
+                    ->latest()
+                    ->get();
+                    $itemsMicro = \App\Models\EventRegistrationSession::where('event_registration_id', $current_registration_id)
+                    ->where('course_id', 2)
+                    ->latest()
+                    ->get();
+                    $itemsAdditional = \App\Models\EventRegistrationSession::where('event_registration_id', $current_registration_id)
+                    ->where('course_id', 3)
+                    ->latest()
+                    ->get();
+            @endphp
+           @if($current_status==1)
+            @if($items->count() > 0)
+            <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Specialty</label>
+                @foreach($items as $item)
+                    @php
+                        $roomIndex = $item->room_id;
+                        $selectedSession = collect($rooms[$roomIndex]['sessions'])->firstWhere('id', $item->session_id);
+                       // $selectedSession = $rooms[$roomIndex]['sessions'][$item->session_id] ?? null; // Safe fetch for session data
+                        $sessionDetails = $selectedSession ? [
+                            'roomName' => $rooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                            'name' => $selectedSession['name'] ?? 'Unknown Session',
+                            'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                            'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                            'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                        ] : null;
+                    @endphp
+
+                    @if($sessionDetails)
+                    <div class="p-4 border rounded-lg shadow">
+                        <p><strong>Room Name:</strong> {{ $sessionDetails['roomName'] }}</p>
+                        <p><strong>Session Name:</strong> {{ $sessionDetails['name'] }}</p>
+                        <p><strong>Session:</strong> {{ $sessionDetails['sessionName'] }}</p>
+                        <p><strong>Time:</strong> {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</p>
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+            @endif
+
+            @if($itemsMicro->count() > 0)
+            <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Micro-courses</label>
+                @foreach($itemsMicro as $item)
+                    @php
+                        $roomIndex = $item->room_id;
+                        $selectedSession = collect($Mainrooms[$roomIndex]['sessions'])->firstWhere('id', $item->session_id);
+                       // $selectedSession = $Mainrooms[$roomIndex]['sessions'][$item->session_id] ?? null; // Safe fetch for session data
+                        $sessionDetails = $selectedSession ? [
+                            'roomName' => $Mainrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                            'name' => $selectedSession['name'] ?? 'Unknown Session',
+                            'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                            'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                            'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                        ] : null;
+                    @endphp
+
+                    @if($sessionDetails)
+                    <div class="p-4 border rounded-lg shadow">
+                        <p><strong>Room Name:</strong> {{ $sessionDetails['roomName'] }}</p>
+                        <p><strong>Session Name:</strong> {{ $sessionDetails['name'] }}</p>
+                        <p><strong>Session:</strong> {{ $sessionDetails['sessionName'] }}</p>
+                        <p><strong>Time:</strong> {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</p>
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+            @endif
+
+            @endif
+            @if($current_status==2)
+            @if($itemsAdditional->count() > 0)
+            <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-600 mb-1">Additional Sessions</label>
+                @foreach($itemsAdditional as $item)
+                    @php
+                        $roomIndex = $item->room_id;
+                        $selectedSession = collect($Additionalrooms[$roomIndex]['sessions'])->firstWhere('id', $item->session_id);
+                       // $selectedSession = $Additionalrooms[$roomIndex]['sessions'][$item->session_id] ?? null; // Safe fetch for session data
+                        $sessionDetails = $selectedSession ? [
+                            'roomName' => $Additionalrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                            'name' => $selectedSession['name'] ?? 'Unknown Session',
+                            'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                            'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                            'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                        ] : null;
+                    @endphp
+
+                    @if($sessionDetails)
+                    <div class="p-4 border rounded-lg shadow">
+                        <p><strong>Room Name:</strong> {{ $sessionDetails['roomName'] }}</p>
+                        <p><strong>Session Name:</strong> {{ $sessionDetails['name'] }}</p>
+                        <p><strong>Session:</strong> {{ $sessionDetails['sessionName'] }}</p>
+                        <p><strong>Time:</strong> {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</p>
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+            @endif
+            @endif
         </div>
     </div>
 </div>
 
-</div>
 
-
-{{-- <div class="flex gap-2 items-center divide-x gap-">
+        {{-- <div class="flex gap-2 items-center divide-x gap-">
         <a href="{{route('page-1')}}" class="hover:underline transition-all duration-300 pr-2">Page One</a>
-<a href="{{route('page-2')}}" class="hover:underline transition-all duration-300 pr-2">Page Two</a>
-<a href="{{route('page-3')}}" class="hover:underline transition-all duration-300">Page Three</a>
-</div> --}}
+        <a href="{{route('page-2')}}" class="hover:underline transition-all duration-300 pr-2">Page Two</a>
+        <a href="{{route('page-3')}}" class="hover:underline transition-all duration-300">Page Three</a>
+    </div> --}}
 
-<script>
-    function alpineSystem() {
-        return {
-            page: @entangle('page')
+    <script>
+        function alpineSystem() {
+            return {
+                page: @entangle('page')
+            }
         }
-    }
-</script>
+    </script>
 </div>

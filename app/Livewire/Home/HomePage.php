@@ -15,7 +15,7 @@ class HomePage extends Component
     public $selectedSessions = [];
     public $selectedMainSessions = [];
     public $selectedAdditionalSessions = [];
-    public $disabledTimeSlots = [];
+    public $disabledTimeSlots = [], $current_registration_id='';
 
     public $rooms = [
         [
@@ -444,7 +444,7 @@ class HomePage extends Component
         }
         $eventRegistration->referral_method = $this->referral_method;
         $eventRegistration->save();
-
+        $this->current_registration_id = $eventRegistration->id;
         if($this->current_status==1) {
 
         foreach ($this->selectedSessions as $roomIndex => $sessionId) {
@@ -515,13 +515,14 @@ class HomePage extends Component
             }
         }
     }
-        $this->reset();
+       // $this->reset();
         try {
             Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));
         } catch (\Exception $e) {
-            dd($e);
+          //  dd($e);
         }
-        return redirect()->route('page-1', ['id' => $eventRegistration->id]);
+        $this->page = 4;
+       // return redirect()->route('page-1', ['id' => $eventRegistration->id]);
     }
 
     // public function selectSession($roomIndex, $sessionId)

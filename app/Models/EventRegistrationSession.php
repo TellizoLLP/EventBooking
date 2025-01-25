@@ -16,4 +16,8 @@ class EventRegistrationSession extends Model
         'session_id',
     ];
     
+    public function eventRegistration()
+    {
+        return $this->belongsTo(EventRegistration::class, 'event_registration_id');
+    }
 }
