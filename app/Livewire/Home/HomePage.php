@@ -4,6 +4,7 @@ namespace App\Livewire\Home;
 
 use App\Mail\RegistrationCreated;
 use App\Models\EventRegistration;
+use App\Models\EventRegistrationSession;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -366,6 +367,51 @@ class HomePage extends Component
         $eventRegistration->school_grade = $this->school_grade;
         $eventRegistration->referral_method = $this->referral_method;
         $eventRegistration->save();
+
+        foreach ($this->selectedSessions as $roomIndex => $sessionId) {
+            // Ensure the session ID exists before saving
+            if ($sessionId) {
+                // Get the selected session from the sessions array
+                $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+        
+                // Ensure that the session exists
+                if ($selectedSession) {
+                    // Create the event registration session
+                    EventRegistrationSession::create([
+                        'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
+                        'course_id' => $this->current_status, // Assuming this is set in your class
+                        'room_id' => $roomIndex, // Use room index or adjust based on your structure
+                        'session_id' => $sessionId, // Selected session ID
+                    ]);
+                } else {
+                    // Handle case where the session is not found in the room
+                    Log::error("Session with ID {$sessionId} not found in Room {$roomIndex}");
+                }
+            }
+        }
+
+        foreach ($this->selectedMainSessions as $roomIndex => $sessionId) {
+            // Ensure the session ID exists before saving
+            if ($sessionId) {
+                // Get the selected session from the sessions array
+                $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+        
+                // Ensure that the session exists
+                if ($selectedSession) {
+                    // Create the event registration session
+                    EventRegistrationSession::create([
+                        'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
+                        'course_id' => $this->current_status, // Assuming this is set in your class
+                        'room_id' => $roomIndex, // Use room index or adjust based on your structure
+                        'session_id' => $sessionId, // Selected session ID
+                    ]);
+                } else {
+                    // Handle case where the session is not found in the room
+                    Log::error("Session with ID {$sessionId} not found in Room {$roomIndex}");
+                }
+            }
+        }
+
         $this->reset();
         try{
             Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));
@@ -452,7 +498,5 @@ public function selectMainSession($roomIndex, $sessionId)
 {
     $this->selectedMainSessions = []; 
     $this->selectedMainSessions[$roomIndex] = $sessionId;
-    dd($this->selectedSessions);
-
 }
 }

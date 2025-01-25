@@ -358,8 +358,15 @@
                                 below</div>
                         </div>
                         <div class="flex gap-2">
-                            <button class="text-sm font-semibold text-white bg-[#285a49] px-3 py-2 rounded-lg antialiased">Next</button>
+                        <button class="text-sm font-semibold text-neutral-500 bg-neutral-100 px-3 py-2 rounded-lg antialiased">Skip</button>
+                        <div class="flex justify-end">
+                            <button @click="$wire.pageThreeSave()" wire:loading.attr="disabled"
+                                class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
+                                Next
+                                <span class="loader" wire:loading></span>
+                            </button>
                         </div>
+                    </div>
                     </div>
                     <div class="flex flex-col">
     
@@ -370,20 +377,20 @@
                         <div class="flex bg-gray-100 p-2 py-3">
                             <div class="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-2">
 
-                            @foreach ($Mainrooms as $roomIndex => $room)
-    @foreach ($room['sessions'] as $mainSession)
+                            @foreach ($Mainrooms as $mainRoomIndex => $mainroom)
+    @foreach ($mainroom['sessions'] as $mainSession)
         <div
             class="session-card 
-            {{ isset($selectedMainSessions[$roomIndex]) && $selectedMainSessions[$roomIndex] == $mainSession['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }} 
+            {{ isset($selectedMainSessions[$mainRoomIndex]) && $selectedMainSessions[$mainRoomIndex] == $mainSession['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }} 
             w-full rounded-lg shadow p-4"
-            wire:click="selectMainSession({{ $roomIndex }}, {{ $mainSession['id'] }})" 
+            wire:click="selectMainSession({{ $mainRoomIndex }}, {{ $mainSession['id'] }})" 
             style="transition: background-color 0.3s;">
             
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <div>
                         <p class="text-neutral-800 font-semibold">{{ $mainSession['name'] }}</p>
-                        <p class="text-sm text-neutral-800">{{ $room['roomName'] }}</p>
+                        <p class="text-sm text-neutral-800">{{ $mainroom['roomName'] }}</p>
                         <span class="text-xs text-neutral-800">({{ $mainSession['name'] }})</span>
                     </div>
                 </div>
@@ -446,7 +453,7 @@
                         <div class="flex justify-end">
                             <button @click="$wire.save()" wire:loading.attr="disabled"
                                 class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
-                                Save
+                                Register
                                 <span class="loader" wire:loading></span>
                             </button>
                         </div>
