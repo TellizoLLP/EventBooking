@@ -297,41 +297,76 @@ dd($this->selectedSessions);
         return redirect()->route('page-1',['id' => $eventRegistration->id]);
     }
 
-    public function selectSession($roomIndex, $sessionId)
-    {
+    // public function selectSession($roomIndex, $sessionId)
+    // {
        
-        $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+    //     $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
     
        
-        if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
+    //     if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
            
-            return; 
-        }
+    //         return; 
+    //     }
     
        
-        if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] == $sessionId) {
-            unset($this->selectedSessions[$roomIndex]);
+    //     if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] == $sessionId) {
+    //         unset($this->selectedSessions[$roomIndex]);
     
         
-            $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$selectedSession['start_time']]);
-        } else {
+    //         $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$selectedSession['start_time']]);
+    //     } else {
             
-            if (count($this->selectedSessions) >= 3) {
+    //         if (count($this->selectedSessions) >= 3) {
                
-
-                $removedSession = array_pop($this->selectedSessions);
-    
-               
-                $removedSessionStartTime = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $removedSession)['start_time'];
-                $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
-
-            }
+    //             if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] == $sessionId) {
+                    
+    //             } else {
+    //             $removedSession = array_pop($this->selectedSessions);
+    //             $removedSessionStartTime = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $removedSession)['start_time'];
+    //             $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
+    //             }
+    //         }
     
           
-            $this->selectedSessions[$roomIndex] = $sessionId;
+    //         $this->selectedSessions[$roomIndex] = $sessionId;
 
-            $this->disabledTimeSlots[] = $selectedSession['start_time'];
-        }
+    //         $this->disabledTimeSlots[] = $selectedSession['start_time'];
+    //     }
+    // }
+
+
+    public function selectSession($roomIndex, $sessionId)
+{
+    // Find the selected session details
+    $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+
+    // If the session's start_time is already disabled, do nothing
+    if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
+        return;
     }
 
+    // Check if the room already has a selected session
+    if (isset($this->selectedSessions[$roomIndex])) {
+        // Remove the current session's start_time from disabledTimeSlots
+        $currentSessionId = $this->selectedSessions[$roomIndex];
+        $currentSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $currentSessionId);
+        $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$currentSession['start_time']]);
+    }
+
+    // If the total selected sessions exceed the limit, remove the oldest selected session
+    if (count($this->selectedSessions) >= 3) {
+        // Remove the oldest session and its start_time
+         if (!isset($this->selectedSessions[$roomIndex])) {
+        $removedSessionId =  array_pop($this->selectedSessions);
+        $removedSessionStartTime = collect($this->rooms)->flatMap(function ($room) {
+            return $room['sessions'];
+        })->firstWhere('id', $removedSessionId)['start_time'];
+        $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
+    }
+    }
+
+    // Add the new session to the selectedSessions and disable its time slot
+    $this->selectedSessions[$roomIndex] = $sessionId;
+    $this->disabledTimeSlots[] = $selectedSession['start_time'];
+}
 }
