@@ -15,7 +15,23 @@
 
                         <div style="height: 95%; width: 40%;" class="bg-primary d-flex justify-content-center align-items-center rounded">
                             <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24">
-                                <path fill="none" stroke="#f7f9ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0a9 9 0 0 1 18 0" />
+                                <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <path stroke-dasharray="72" stroke-dashoffset="72" d="M12 3h7v18h-14v-18h7Z">
+                                        <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="72;0" />
+                                    </path>
+                                    <path stroke-dasharray="12" stroke-dashoffset="12" stroke-width="1" d="M14.5 3.5v3h-5v-3">
+                                        <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0" />
+                                    </path>
+                                    <path stroke-dasharray="4" stroke-dashoffset="4" d="M9 10h3">
+                                        <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="4;0" />
+                                    </path>
+                                    <path stroke-dasharray="6" stroke-dashoffset="6" d="M9 13h5">
+                                        <animate fill="freeze" attributeName="stroke-dashoffset" begin="1.1s" dur="0.2s" values="6;0" />
+                                    </path>
+                                    <path stroke-dasharray="8" stroke-dashoffset="8" d="M9 16h6">
+                                        <animate fill="freeze" attributeName="stroke-dashoffset" begin="1.3s" dur="0.2s" values="8;0" />
+                                    </path>
+                                </g>
                             </svg>
                         </div>
 
@@ -37,8 +53,12 @@
 
                         <div style="height: 95%; width: 40%;" class="bg-info d-flex justify-content-center align-items-center rounded  ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24">
-                                <path fill="#f7f9ff" fill-rule="evenodd" d="M6.271 2.112c-.81.106-1.238.301-1.544.6c-.305.3-.504.72-.613 1.513C4.002 5.042 4 6.124 4 7.675v8.57a4.2 4.2 0 0 1 1.299-.593c.528-.139 1.144-.139 2.047-.138H20V7.676c0-1.552-.002-2.634-.114-3.451c-.109-.793-.308-1.213-.613-1.513c-.306-.299-.734-.494-1.544-.6c-.834-.11-1.938-.112-3.522-.112H9.793c-1.584 0-2.688.002-3.522.112m.488 4.483c0-.448.37-.811.827-.811h8.828a.82.82 0 0 1 .827.81a.82.82 0 0 1-.827.811H7.586a.82.82 0 0 1-.827-.81m.827 2.973a.82.82 0 0 0-.827.81c0 .448.37.811.827.811h5.517a.82.82 0 0 0 .828-.81a.82.82 0 0 0-.828-.811z" clip-rule="evenodd" />
-                                <path fill="#f7f9ff" d="M7.473 17.135H20c-.003 1.13-.021 1.974-.113 2.64c-.109.793-.308 1.213-.613 1.513c-.306.299-.734.494-1.544.6c-.834.11-1.938.112-3.522.112H9.793c-1.584 0-2.688-.002-3.522-.111c-.81-.107-1.238-.302-1.544-.601c-.305-.3-.504-.72-.613-1.513c-.041-.3-.068-.637-.084-1.02a2.46 2.46 0 0 1 1.697-1.537c.29-.076.667-.083 1.746-.083" />
+                                <path fill="#fff" d="M6 2h12v0h-12zM6 22h12v0h-12z">
+                                    <animate fill="freeze" attributeName="d" begin="0.6s" dur="0.2s" values="M6 2h12v0h-12zM6 22h12v0h-12z;M6 2h12v3h-12zM6 22h12v-3h-12z" />
+                                </path>
+                                <path fill="none" stroke="#fff" stroke-dasharray="64" stroke-dashoffset="64" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2h5c0.55 0 1 0.45 1 1v18c0 0.55 -0.45 1 -1 1h-10c-0.55 0 -1 -0.45 -1 -1v-18c0 -0.55 0.45 -1 1 -1Z">
+                                    <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="64;0" />
+                                </path>
                             </svg>
                         </div>
 
