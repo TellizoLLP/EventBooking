@@ -304,8 +304,13 @@ dd($this->selectedSessions);
         unset($this->selectedSessions[$roomIndex]);
     } else {
         // Otherwise, select the new session
+        if (count($this->selectedSessions) >= 3) {
+            array_pop($this->selectedSessions);
+        }
+
         $this->selectedSessions[$roomIndex] = $sessionId;
     }
+
 }
 
 }

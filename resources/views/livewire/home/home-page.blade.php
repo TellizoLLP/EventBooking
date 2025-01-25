@@ -202,7 +202,7 @@
                                 <!-- <div class="w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4"> -->
                                 <div
                                     class="session {{ $session['clickable'] ? '' : 'opacity-50 cursor-not-allowed' }} 
-                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-blue-900' : '' }}
+                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-blue-900' : 'bg-white' }}
                             {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] !== $session['id'] ? 'bg-white' : '' }}
                             w-full hover:bg-[#1c4a38]  rounded-lg shadow p-4"
                                     wire:click="selectSession({{ $roomIndex }}, {{ $session['id'] }})">
