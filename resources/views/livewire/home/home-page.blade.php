@@ -112,7 +112,7 @@
                                 <option value="12">12</option>
                             </select>
                             @error('school_grade')
-                            <span class="text-red-500 text-xs">{{$message}} </span>
+                            <span class="text-red-500 text-xs">"The email field is required." </span>
                             @enderror
                         </div>
                         @endif
@@ -420,7 +420,7 @@
                                             <p>{{ "No Seats Limit" }}</p>
                                             @else
                                             @php
-                                            $slots = getFilledSlots($mainRoomIndex,$mainSession['id']);
+                                            $slots = getFilledSlotsMain($mainRoomIndex,$mainSession['id']);
                                             @endphp
                                             <p>{{ $slots['filled'] }}/40</p>
                                             @endif

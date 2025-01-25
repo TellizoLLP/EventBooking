@@ -407,7 +407,7 @@ class HomePage extends Component
                     // Create the event registration session
                     EventRegistrationSession::create([
                         'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
-                        'course_id' => $this->current_status, // Assuming this is set in your class
+                        'course_id' => 1, // Assuming this is set in your class
                         'room_id' => $roomIndex, // Use room index or adjust based on your structure
                         'session_id' => $sessionId, // Selected session ID
                     ]);
@@ -429,7 +429,7 @@ class HomePage extends Component
                     // Create the event registration session
                     EventRegistrationSession::create([
                         'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
-                        'course_id' => $this->current_status, // Assuming this is set in your class
+                        'course_id' => 2, // Assuming this is set in your class
                         'room_id' => $roomIndex, // Use room index or adjust based on your structure
                         'session_id' => $sessionId, // Selected session ID
                     ]);
