@@ -201,11 +201,11 @@
                                 <!-- <div class="w-full bg-{{ $session['clickable'] ? '[#285a49]' : 'white' }} rounded-lg shadow p-4"> -->
                                 <!-- <div class="w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4"> -->
                                 <div
-                                class="session {{ $session['clickable'] ? '' : 'opacity-50 cursor-not-allowed' }} 
-                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-blue-500' : '' }}
-                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] !== $session['id'] ? 'bg-red-500' : '' }}
-                            w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4"
-                        wire:click="selectSession({{ $roomIndex }}, {{ $session['id'] }})">
+                                    class="session {{ $session['clickable'] ? '' : 'opacity-50 cursor-not-allowed' }} 
+                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-blue-900' : '' }}
+                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] !== $session['id'] ? 'bg-white' : '' }}
+                            w-full hover:bg-[#1c4a38]  rounded-lg shadow p-4"
+                                    wire:click="selectSession({{ $roomIndex }}, {{ $session['id'] }})">
 
 
                                     <!-- Session Info -->
