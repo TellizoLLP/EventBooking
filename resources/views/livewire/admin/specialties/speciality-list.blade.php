@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <button wire:click="" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#centeredModalPrimary">
-                            <i class="me-1 fas fa-file-csv"></i>Add Speciality
+                            <i class="me-1 fas fa-plus"></i>Add Speciality
                         </button>
                         {{-- <button class="btn btn-outline-secondary"><i class="me-1 fas fa-print"></i>Print</button> --}}
                     </div>
@@ -24,26 +24,42 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
-                            <th>Amount</th>
-                            <th>Date</th>
+                            <th>Room</th>
                             <th>Description</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr>
-                            <td>Session 1</td>
-                            <td>$120</td>
-                            <td>Sample </td>
-                            <td>Sample</td>
-                            <td>
-                                {{-- <a class="menu-link" href="{{ route('expenses.manage', $expense->id) }}"> --}}
-                                <i class="align-middle far fa-fw fa-edit fa-lg text-primary"></i>
-                                {{-- <a class="menu-link" wire:click.prevent="deleteExpense({{ $expense->id }})"> --}}
-                                <i class="align-middle fas fa-fw fa-trash fa-lg text-primary"></i>
-                            </td>
+                            <td>1</td>
+                            <td>Medicine - بط</td>
+                            <td>Room 6</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td> Pharmacy - ﺔﻟدﯾﺻ </td>
+                            <td>Studio 7</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td> Dentistry - بط</td>
+                            <td>Room 4</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td> Allied Health - موﻠﻋ</td>
+                            <td>Room 5</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Veterinary sciences - بط</td>
+                            <td>Studio 3</td>
+                            <td>-</td>
                         </tr>
                     </tbody>
                 </table>
@@ -59,17 +75,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="card-body p-3">
-                <div class="mb-3">
-                        <label class="form-label">Name</label>
+                    <div class="mb-3">
+                        <label class="form-label">Name <span class="text-danger ">*</span></label>
                         <input type="text" class="form-control" placeholder="Enter speciality name">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Room/Studio</label>
-                        <input type="text" class="form-control" placeholder="Email">
+                        <label class="form-label">Room/Studio <span class="text-danger ">*</span></label>
+                        <select type="text" class="form-control">
+                            <option value="1">Room 4</option>
+                            <option value="2">Room 5</option>
+                            <option value="3">Room 6</option>
+                            <option value="4">Stuido 3</option>
+                            <option value="5">Studio 7</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Description</label>
-                        <textarea class="form-control" placeholder="Textarea" rows="3"></textarea>
+                        <textarea class="form-control" placeholder="Enter description" rows="3"></textarea>
                     </div>
 
                 </div>
