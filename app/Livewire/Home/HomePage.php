@@ -11,6 +11,220 @@ use Livewire\Component;
 class HomePage extends Component
 {
     public $current_status = 1,$first_name,$last_name,$email,$phone,$school_name,$school_grade,$referral_method,$page = 1;
+
+
+
+    public $rooms = [
+        [
+            'roomName' => 'Room 6',
+            'sessions' => [
+                [
+                    'name' => 'Medicine',
+                    'session' => 'Session 1',
+                    'duration' => '1 hour',
+                    'start_time' => '11:00 am',
+                    'end_time' => '12:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Medicine',
+                    'session' => 'Session 2',
+                    'duration' => '1 hour',
+                    'start_time' => '12:00 pm',
+                    'end_time' => '01:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Medicine',
+                    'session' => 'Session 3',
+                    'duration' => '1 hour',
+                    'start_time' => '4:00 pm',
+                    'end_time' => '5:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Medicine',
+                    'session' => 'Session 4',
+                    'duration' => '1 hour',
+                    'start_time' => '5:00 pm',
+                    'end_time' => '6:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+        ],
+        [
+            'roomName' => 'Studio 7',
+            'sessions' => [
+                [
+                    'name' => 'Pharmacy',
+                    'session' => 'Session 1',
+                    'duration' => '1 hour',
+                    'start_time' => '11:00 am',
+                    'end_time' => '12:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Pharmacy',
+                    'session' => 'Session 2',
+                    'duration' => '1 hour',
+                    'start_time' => '12:00 pm',
+                    'end_time' => '01:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Pharmacy',
+                    'session' => 'Session 3',
+                    'duration' => '1 hour',
+                    'start_time' => '4:00 pm',
+                    'end_time' => '5:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Pharmacy',
+                    'session' => 'Session 4',
+                    'duration' => '1 hour',
+                    'start_time' => '5:00 pm',
+                    'end_time' => '6:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+        ],
+        [
+            'roomName' => 'Room 4',
+            'sessions' => [
+                [
+                    'name' => 'Dentistry',
+                    'session' => 'Session 1',
+                    'duration' => '1 hour',
+                    'start_time' => '11:00 am',
+                    'end_time' => '12:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Dentistry',
+                    'session' => 'Session 2',
+                    'duration' => '1 hour',
+                    'start_time' => '12:00 pm',
+                    'end_time' => '01:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Dentistry',
+                    'session' => 'Session 3',
+                    'duration' => '1 hour',
+                    'start_time' => '4:00 pm',
+                    'end_time' => '5:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Dentistry',
+                    'session' => 'Session 4',
+                    'duration' => '1 hour',
+                    'start_time' => '5:00 pm',
+                    'end_time' => '6:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+            
+        ],
+        [
+            'roomName' => 'Room 5',
+            'sessions' => [
+                [
+                    'name' => 'Allied Health',
+                    'session' => 'Session 1',
+                    'duration' => '1 hour',
+                    'start_time' => '11:00 am',
+                    'end_time' => '12:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Allied Health',
+                    'session' => 'Session 2',
+                    'duration' => '1 hour',
+                    'start_time' => '12:00 pm',
+                    'end_time' => '01:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Allied Health',
+                    'session' => 'Session 3',
+                    'duration' => '1 hour',
+                    'start_time' => '4:00 pm',
+                    'end_time' => '5:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Allied Health',
+                    'session' => 'Session 4',
+                    'duration' => '1 hour',
+                    'start_time' => '5:00 pm',
+                    'end_time' => '6:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+            
+        ],
+        [
+            'roomName' => 'Studio 3',
+            'sessions' => [
+                [
+                    'name' => 'Veterinary Sciences',
+                    'session' => 'Session 1',
+                    'duration' => '1 hour',
+                    'start_time' => '11:00 am',
+                    'end_time' => '12:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Veterinary Sciences',
+                    'session' => 'Session 2',
+                    'duration' => '1 hour',
+                    'start_time' => '12:00 pm',
+                    'end_time' => '01:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Veterinary Sciences',
+                    'session' => 'Session 3',
+                    'duration' => '1 hour',
+                    'start_time' => '4:00 pm',
+                    'end_time' => '5:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+                [
+                    'name' => 'Veterinary Sciences',
+                    'session' => 'Session 4',
+                    'duration' => '1 hour',
+                    'start_time' => '5:00 pm',
+                    'end_time' => '6:00 pm',
+                    'clickable' => true,
+                    'slots' => '40/40',
+                ],
+            ],
+            
+        ],
+    ];
+
     #[Layout('components.layouts.home-layout')]
     public function render()
     {
