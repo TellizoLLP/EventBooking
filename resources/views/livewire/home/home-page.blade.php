@@ -202,9 +202,9 @@
                                 <!-- <div class="w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4"> -->
                                 <div
                                     class="session {{ $session['clickable'] ? '' : 'opacity-50 cursor-not-allowed' }} 
-                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-blue-900' : '' }}
+                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }}
                             {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] !== $session['id'] ? 'bg-white' : '' }}
-                            w-full hover:bg-[#1c4a38]  rounded-lg shadow p-4"
+                            w-full  rounded-lg shadow p-4"
                                     wire:click="selectSession({{ $roomIndex }}, {{ $session['id'] }})">
 
 
@@ -268,15 +268,15 @@
                                             </div>
                                             @endif
                                             <div class="ml-3">
-                                                <p class="text-gray-900 font-semibold">
+                                                <p class=" font-semibold">
                                                     {{ $session['name'] }}
                                                 </p>
-                                                <p class="text-sm text-gray-500">
+                                                <p class="text-sm ">
                                                     {{ $session['session'] }}
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="text-sm text-gray-500">
+                                        <div class="text-sm ">
                                             {{ $session['duration'] }}
                                         </div>
                                     </div>
@@ -285,13 +285,13 @@
                                     <div class="my-4 border-t border-gray-200 pt-4">
                                         <div class="flex justify-between items-center">
                                             <div>
-                                                <p class="text-sm font-bold text-[#285a49]">
+                                                <p class="text-sm font-bold ">
                                                     {{ $session['start_time'] }}
                                                 </p>
                                             </div>
                                             <!-- Flight Icon -->
                                             <div class="text-gray-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-white"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="size-6 "
                                                     viewBox="0 0 24 24">
                                                     <path fill="currentColor"
                                                         d="M12 4c6.928 0 11.258 7.5 7.794 13.5A9 9 0 0 1 12 22C5.072 22 .742 14.5 4.206 8.5A9 9 0 0 1 12 4"
@@ -302,7 +302,7 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <p class="text-sm font-bold text-[#285a49]">
+                                                <p class="text-sm font-bold ">
                                                     {{ $session['end_time'] }}
                                                 </p>
                                             </div>
@@ -310,9 +310,9 @@
                                     </div>
 
                                     <!-- Additional Info -->
-                                    <div class="flex justify-between items-center text-sm text-gray-500 mt-2">
+                                    <div class="flex justify-between items-center text-sm  mt-2">
                                         <div class="flex items-center gap-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-gray-500"
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5 "
                                                 viewBox="0 0 512 512">
                                                 <path fill="currentColor"
                                                     d="M459.15 269.75a133.197 133.197 0 0 1-55.862 179.975l-42.782 22.541l-10.52 5.533a71.28 71.28 0 0 1-62.966 1.685l-167.077-71.38l15.733-46.676l99.363 19.194l-51.458-97.78l-82.843-157.411l40.357-21.232l82.844 157.457l19.934-10.485l-36.521-69.445l40.335-21.22l36.52 69.445l19.935-10.485l-28.2-53.598l40.358-21.232l28.2 53.598l19.945-10.576l-19.354-36.886l40.346-21.174l19.354 36.885l54.348 103.301zM73.268 146.674a60.03 60.03 0 0 1 42.361-102.459a60.098 60.098 0 0 1 56.58 80.169l10.588 20.013A78.29 78.29 0 0 0 115.708 26a78.233 78.233 0 0 0-5.635 156.262L99.428 162.02a59.7 59.7 0 0 1-26.16-15.346" />
