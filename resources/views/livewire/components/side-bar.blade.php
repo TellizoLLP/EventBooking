@@ -2,7 +2,7 @@
     <div class="sidebar-content js-simplebar">
         <a class='sidebar-brand ' href='index.html'>
             <span class="sidebar-brand-text align-middle">
-            <i class="align-middle me-2 fas fa-fw fa-book-reader"></i>  WYN ACADEMY
+                <i class="align-middle me-2 fas fa-fw fa-book-reader"></i> WYN ACADEMY
             </span>
             <svg class="sidebar-brand-icon align-middle" width="32px" height="32px" viewBox="0 0 24 24"
                 fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"
@@ -19,15 +19,21 @@
                 </a>
             </li>
             <li class="sidebar-header">
-                PAGES
-            </li>               
+                GENERAL
+            </li>
             <li class="sidebar-item">
                 <a class='sidebar-link' href="{{route('registrations')}}">
                     <i class="align-middle" data-feather="calendar"></i>
                     <span class="align-middle">Registrations</span>
                 </a>
             </li>
-            
+            <li class="sidebar-item">
+                <a class='sidebar-link' wire:click="logout">
+                    <i class="align-middle" data-feather="log-out"></i>
+                    <span class="align-middle">Logout</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
