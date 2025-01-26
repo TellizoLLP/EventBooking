@@ -383,7 +383,7 @@ class HomePage extends Component
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:event_registrations,email',
             'phone' => 'required|string',
             'current_status' => 'required',
             'school_name' => 'required_if:current_status,1',
@@ -403,7 +403,7 @@ class HomePage extends Component
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:event_registrations,email',
             'phone' => 'required|string',
             'current_status' => 'required',
             'school_name' => 'required_if:current_status,1',
@@ -419,7 +419,7 @@ class HomePage extends Component
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:event_registrations,email',
             'phone' => 'required|string',
             'current_status' => 'required',
             'school_name' => 'required_if:current_status,1',
@@ -437,7 +437,7 @@ class HomePage extends Component
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:event_registrations,email',
             'phone' => 'required|string',
             'current_status' => 'required',
             'school_name' => 'required_if:current_status,1',
