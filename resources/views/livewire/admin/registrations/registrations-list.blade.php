@@ -41,10 +41,10 @@
                                 $roomIndex = $session->room_id;
 
                                 // Safe fetch for session data from rooms array
-                                $selectedSession = $rooms[$roomIndex]['sessions'][$session->id] ?? null;
+                                $selectedSession = $rooms[$roomIndex]['sessions'][$session->session_id] ?? null;
 
                                 // Fetch session details from Mainrooms array if not found in rooms array
-                                $selectedMainSession = $Mainrooms[$roomIndex]['sessions'][$session->id] ?? null;
+                                $selectedMainSession = $Mainrooms[$roomIndex]['sessions'][$session->session_id] ?? null;
 
                                 // Prepare session details, checking both rooms and Mainrooms
                                 $sessionDetails = null;
