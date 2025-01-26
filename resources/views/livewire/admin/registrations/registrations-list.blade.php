@@ -35,58 +35,105 @@
                             <td>{{$item->phone}}</td>
                             <td> {{ $item->current_status == 1 ? 'Student' : 'Parent' }}</td>
                             <td>
-                                @foreach ($item->eventRegistrationSessions as $session)
                                 @php
+                                $current_registration_id = $item['id'];
                                 // Get room index from session's room_id
+                                $items = \App\Models\EventRegistrationSession::where(
+                                'event_registration_id',
+                                $current_registration_id,
+                                )
+                                ->where('course_id', 1)
+                                ->latest()
+                                ->get();
+                                $itemsMicro = \App\Models\EventRegistrationSession::where(
+                                'event_registration_id',
+                                $current_registration_id,
+                                )
+                                ->where('course_id', 2)
+                                ->latest()
+                                ->get();
+                                $itemsAdditional = \App\Models\EventRegistrationSession::where(
+                                'event_registration_id',
+                                $current_registration_id,
+                                )
+                                ->where('course_id', 3)
+                                ->latest()
+                                ->get();
+                                @endphp
+
+                                {{-- Loop through $items --}}
+                                @if ($items->count() > 0)
+                                @foreach ($items as $session)
+                                @php
                                 $roomIndex = $session->room_id;
-
-                                // Safe fetch for session data from rooms array
-                                $selectedSession = $rooms[$roomIndex]['sessions'][$session->session_id] ?? null;
-
-                                // Fetch session details from Mainrooms array if not found in rooms array
-                                $selectedMainSession = $Mainrooms[$roomIndex]['sessions'][$session->session_id] ?? null;
-                                $selectedAdditionalSession = $Additionalrooms[$roomIndex]['sessions'][$session->session_id] ?? null;
-                                // Prepare session details, checking both rooms and Mainrooms
-                                $sessionDetails = null;
-
-                                // First, check if the session is in rooms
-                                $sessionDetails = [
+                                $selectedSession = collect($rooms[$roomIndex]['sessions'])->firstWhere('id', $session->session_id);
+                                $sessionDetails = $selectedSession
+                                ? [
                                 'roomName' => $rooms[$roomIndex]['roomName'] ?? 'Unknown Room',
-                                'sessionName' => $selectedSession['name'] ?? 'Unknown Session',
+                                'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
                                 'startTime' => $selectedSession['start_time'] ?? 'N/A',
                                 'endTime' => $selectedSession['end_time'] ?? 'N/A',
-                                ];
-
-                                // Then, check if the session is in Mainrooms and update sessionDetails if it's not already set
-                                if (!$sessionDetails) {
-                                $sessionDetails = [
-                                'roomName' => $Mainrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
-                                'sessionName' => $selectedMainSession['name'] ?? 'Unknown Session',
-                                'startTime' => $selectedMainSession['start_time'] ?? 'N/A',
-                                'endTime' => $selectedMainSession['end_time'] ?? 'N/A',
-                                ];
-                               
-                                }
-
-                                if(!$sessionDetails){
-                                    $sessionDetails = [
-                                    'roomName' => $Additionalrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
-                                    'sessionName' => $selectedAdditionalSession['name'] ?? 'Unknown Session',
-                                    'startTime' => $selectedAdditionalSession['start_time'] ?? 'N/A',
-                                    'endTime' => $selectedAdditionalSession['end_time'] ?? 'N/A',
-                                    ];
-                                }
-
+                                ]
+                                : null;
                                 @endphp
 
                                 @if ($sessionDetails)
                                 <p>Room: {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
                                 @else
-                                <p>Room: Unknown, Session: Unknown </p>
+                                <p>Room: Unknown, Session: Unknown</p>
                                 @endif
                                 @endforeach
+                                @endif
 
+                                {{-- Loop through $itemsMicro --}}
+                                @if ($itemsMicro->count() > 0)
+                                @foreach ($itemsMicro as $session)
+                                @php
+                                $roomIndex = $session->room_id;
+                                $selectedSession = collect($Mainrooms[$roomIndex]['sessions'])->firstWhere('id', $session->session_id);
+                                $sessionDetails = $selectedSession
+                                ? [
+                                'roomName' => $Mainrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                                'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                                'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                                'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                                ]
+                                : null;
+                                @endphp
+
+                                @if ($sessionDetails)
+                                <p>Room: {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
+                                @else
+                                <p>Room: Unknown, Session: Unknown</p>
+                                @endif
+                                @endforeach
+                                @endif
+
+                                {{-- Loop through $itemsAdditional --}}
+                                @if ($itemsAdditional->count() > 0)
+                                @foreach ($itemsAdditional as $session)
+                                @php
+                                $roomIndex = $session->room_id;
+                                $selectedSession = collect($Additionalrooms[$roomIndex]['sessions'])->firstWhere('id', $session->session_id);
+                                $sessionDetails = $selectedSession
+                                ? [
+                                'roomName' => $Additionalrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                                'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                                'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                                'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                                ]
+                                : null;
+                                @endphp
+
+                                @if ($sessionDetails)
+                                <p>Room: {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
+                                @else
+                                <p>Room: Unknown, Session: Unknown</p>
+                                @endif
+                                @endforeach
+                                @endif
                             </td>
+
 
                         </tr>
                         @endforeach
