@@ -70,7 +70,7 @@
                                 $sessionDetails = $selectedSession
                                 ? [
                                 'roomName' => $rooms[$roomIndex]['roomName'] ?? 'Unknown Room',
-                                'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                                'sessionName' => $selectedSession['name'] ?? 'Unknown Session',
                                 'startTime' => $selectedSession['start_time'] ?? 'N/A',
                                 'endTime' => $selectedSession['end_time'] ?? 'N/A',
                                 ]
@@ -78,7 +78,7 @@
                                 @endphp
 
                                 @if ($sessionDetails)
-                                <p>Room: {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
+                                <p> {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
                                 @else
                                 <p>Room: Unknown, Session: Unknown</p>
                                 @endif
@@ -94,7 +94,7 @@
                                 $sessionDetails = $selectedSession
                                 ? [
                                 'roomName' => $Mainrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
-                                'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                                'sessionName' => $selectedSession['name'] ?? 'Unknown Session',
                                 'startTime' => $selectedSession['start_time'] ?? 'N/A',
                                 'endTime' => $selectedSession['end_time'] ?? 'N/A',
                                 ]
@@ -102,7 +102,7 @@
                                 @endphp
 
                                 @if ($sessionDetails)
-                                <p>Room: {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
+                                <p> {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
                                 @else
                                 <p>Room: Unknown, Session: Unknown</p>
                                 @endif
@@ -118,7 +118,7 @@
                                 $sessionDetails = $selectedSession
                                 ? [
                                 'roomName' => $Additionalrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
-                                'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                                'sessionName' => $selectedSession['name'] ?? 'Unknown Session',
                                 'startTime' => $selectedSession['start_time'] ?? 'N/A',
                                 'endTime' => $selectedSession['end_time'] ?? 'N/A',
                                 ]
@@ -126,7 +126,7 @@
                                 @endphp
 
                                 @if ($sessionDetails)
-                                <p>Room: {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
+                                <p> {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
                                 @else
                                 <p>Room: Unknown, Session: Unknown</p>
                                 @endif

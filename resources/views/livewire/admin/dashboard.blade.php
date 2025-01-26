@@ -101,9 +101,9 @@
                         <div class="d-flex flex-column justify-content-center align-items-center ">
 
                             <div class="col">
-                                <h5 class="card-title">Total Bookings</h5>
+                                <h5 class="card-title">Total Registrations</h5>
                             </div>
-                            <h1 class="mt-1 mb-3">10</h1>
+                            <h1 class="mt-1 mb-3">{{$bookings}}</h1>
                         </div>
                     </div>
                 </div>
