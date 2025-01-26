@@ -20,60 +20,14 @@
             </li>
             <li class="sidebar-header">
                 PAGES
-            </li>
+            </li>               
             <li class="sidebar-item">
-                <a class='sidebar-link' href="{{route('speciality')}}">
-                    <i class="align-middle" data-feather="target"></i> 
-                    <span class="align-middle">Medzone-Experience</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href=''>
-                    <i class="align-middle" data-feather="tablet"></i>
-                    <span class="align-middle">Micro-Courses</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href="{{route('session')}}">
-                    <i class="align-middle" data-feather="clock"></i>
-                    <span class="align-middle">Sessions</span>
+                <a class='sidebar-link' href="{{route('registrations')}}">
+                    <i class="align-middle" data-feather="calendar"></i>
+                    <span class="align-middle">Registrations</span>
                 </a>
             </li>
             
-            <li class="sidebar-item">
-                <a class='sidebar-link' href=''>
-                    <i class="align-middle" data-feather="calendar"></i>
-                    <span class="align-middle">Bookings</span>
-                </a>
-            </li>
-            <li class="sidebar-header">
-                GENERAL
-            </li>
-            <li class="sidebar-item">
-                <a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="bar-chart-2"></i>
-                    <span class="align-middle">Reports</span>
-                </a>
-                <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                    <li class="sidebar-item"><a class='sidebar-link' href='index.html'>Bookings Report</a></li>
-                    <li class="sidebar-item"><a class='sidebar-link' href='dashboard-ecommerce.html'>Sessions Report</a></li>
-                </ul>
-            </li>
-            <li class="sidebar-header">
-                TOOLS
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href=''>
-                    <i class="align-middle" data-feather="users"></i>
-                    <span class="align-middle">Registered Users</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href=''>
-                    <i class="align-middle" data-feather="settings"></i>
-                    <span class="align-middle">Settings</span>
-                </a>
-            </li>
         </ul>
     </div>
 </nav>
