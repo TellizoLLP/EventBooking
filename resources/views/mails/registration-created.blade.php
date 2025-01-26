@@ -42,6 +42,9 @@
             padding: 10px;
             border: 1px solid #ddd;
         }
+        .details th {
+            background-color: #f4f4f9;
+        }
         .footer {
             background-color: #f4f4f9;
             padding: 10px;
@@ -64,52 +67,124 @@
         
         <!-- Content -->
         <div class="content">
-            <p>Dear {{ $registration->first_name }} {{ $registration->last_name }},</p>
+            <p>Dear {{ $first_name }} {{ $last_name }},</p>
             <p>Thank you for registering! Your registration has been successfully completed. Below are the details of your submission:</p>
             
             <table class="details">
                 <tr>
                     <th>First Name</th>
-                    <td>{{ $registration->first_name }}</td>
+                    <td>{{ $first_name }}</td>
                 </tr>
                 <tr>
                     <th>Last Name</th>
-                    <td>{{ $registration->last_name }}</td>
+                    <td>{{ $last_name }}</td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td>{{ $registration->email }}</td>
+                    <td>{{ $email }}</td>
                 </tr>
                 <tr>
                     <th>Phone</th>
-                    <td>{{ $registration->phone }}</td>
+                    <td>{{ $phone }}</td>
                 </tr>
-                <tr>
-                    <th>Current Status</th>
-                    <td>{{ $registration->current_status ==1 ? 'Student' : 'Parent' }}</td>
-                </tr>
-                @if($registration->school_name)
-                <tr>
-                    <th>School Name</th>
-                    <td>{{ $registration->school_name }}</td>
-                </tr>
-                @endif
-                @if($registration->school_grade)
-                <tr>
-                    <th>School Grade</th>
-                    <td>{{ $registration->school_grade }}</td>
-                </tr>
-                @endif
-                @if($registration->referral_method)
                 <tr>
                     <th>Referral Method</th>
-                    <td>{{ $registration->referral_method }}</td>
+                    <td>{{ $referral_method }}</td>
+                </tr>
+                @if ($current_status == 1)
+                <tr>
+                    <th>School Name</th>
+                    <td>{{ $school_name }}</td>
+                </tr>
+                <tr>
+                    <th>School Grade</th>
+                    <td>{{ $school_grade }}</td>
                 </tr>
                 @endif
             </table>
+
+            @if ($items->count() > 0)
+            <h2>Specialty Sessions</h2>
+            @foreach ($items as $item)
+            @php
+                $roomIndex = $item->room_id;
+                $selectedSession = collect($rooms[$roomIndex]['sessions'])->firstWhere('id', $item->session_id);
+                $sessionDetails = $selectedSession
+                    ? [
+                        'roomName' => $rooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                        'name' => $selectedSession['name'] ?? 'Unknown Session',
+                        'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                        'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                        'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                    ]
+                    : null;
+            @endphp
+            @if ($sessionDetails)
+            <ul>
+                <li><strong>Room Name:</strong> {{ $sessionDetails['roomName'] }}</li>
+                <li><strong>Session Name:</strong> {{ $sessionDetails['name'] }}</li>
+                <li><strong>Session:</strong> {{ $sessionDetails['sessionName'] }}</li>
+                <li><strong>Time:</strong> {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</li>
+            </ul>
+            @endif
+            @endforeach
+            @endif
+
+            @if ($itemsMicro->count() > 0)
+            <h2>Micro-courses</h2>
+            @foreach ($itemsMicro as $item)
+            @php
+                $roomIndex = $item->room_id;
+                $selectedSession = collect($Mainrooms[$roomIndex]['sessions'])->firstWhere('id', $item->session_id);
+                $sessionDetails = $selectedSession
+                    ? [
+                        'roomName' => $Mainrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                        'name' => $selectedSession['name'] ?? 'Unknown Session',
+                        'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                        'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                        'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                    ]
+                    : null;
+            @endphp
+            @if ($sessionDetails)
+            <ul>
+                <li><strong>Room Name:</strong> {{ $sessionDetails['roomName'] }}</li>
+                <li><strong>Session Name:</strong> {{ $sessionDetails['name'] }}</li>
+                <li><strong>Session:</strong> {{ $sessionDetails['sessionName'] }}</li>
+                <li><strong>Time:</strong> {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</li>
+            </ul>
+            @endif
+            @endforeach
+            @endif
+
+            @if ($itemsAdditional->count() > 0)
+            <h2>Additional Sessions</h2>
+            @foreach ($itemsAdditional as $item)
+            @php
+                $roomIndex = $item->room_id;
+                $selectedSession = collect($Additionalrooms[$roomIndex]['sessions'])->firstWhere('id', $item->session_id);
+                $sessionDetails = $selectedSession
+                    ? [
+                        'roomName' => $Additionalrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                        'name' => $selectedSession['name'] ?? 'Unknown Session',
+                        'sessionName' => $selectedSession['session'] ?? 'Unknown Session',
+                        'startTime' => $selectedSession['start_time'] ?? 'N/A',
+                        'endTime' => $selectedSession['end_time'] ?? 'N/A',
+                    ]
+                    : null;
+            @endphp
+            @if ($sessionDetails)
+            <ul>
+                <li><strong>Room Name:</strong> {{ $sessionDetails['roomName'] }}</li>
+                <li><strong>Session Name:</strong> {{ $sessionDetails['name'] }}</li>
+                <li><strong>Session:</strong> {{ $sessionDetails['sessionName'] }}</li>
+                <li><strong>Time:</strong> {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</li>
+            </ul>
+            @endif
+            @endforeach
+            @endif
             
             <p>If you have any questions or need further assistance, feel free to reply to this email or contact our support team.</p>
-            
             <p>Best regards,</p>
             <p>The Youth Medical Forum Team</p>
         </div>
