@@ -545,7 +545,6 @@
     x-transition:leave="transition-opacity transform ease-in duration-500 absolute inset-0"
     x-transition:leave-start="opacity-100 translate-x-0"
     x-transition:leave-end="opacity-0 -translate-x-full" x-cloak>
-    <div>
         <div class="flex w-full justify-between items-center">
             <h2 class="text-lg font-semibold text-green-800 mb-4">Registration Successful</h2>
         </div>
@@ -553,33 +552,33 @@
         <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
             <div class="col-span-2 sm:col-span-1">
                 <label class="block text-sm font-medium text-gray-600 mb-1">First Name</label>
-                {{$first_name}}
+                {{$first_name}} SHiyas
             </div>
             <div class="col-span-1">
                 <label class="block text-sm font-medium text-gray-600 mb-1">Last Name</label>
-                {{$last_name}}
+                {{$last_name}} Nehma
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
-                {{$email}}
+                {{$email}} shiyas@gmail.com
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label class="block text-sm font-medium text-gray-600 mb-1">Phone</label>
-                {{$phone}}
+                {{$phone}} 8129725377
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label class="block text-sm font-medium text-gray-600 mb-1">Referral Method</label>
-                {{$referral_method}}
+                {{$referral_method}} test method
             </div>
 
             @if($current_status == 1)
             <div class="col-span-2 sm:col-span-1">
                 <label class="block text-sm font-medium text-gray-600 mb-1">School Name</label>
-                {{$school_name}}
+                {{$school_name}} sampke
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label class="block text-sm font-medium text-gray-600 mb-1">School Grade</label>
-                {{$school_grade}}
+                {{$school_grade}} 9
             </div>
             @endif
 
@@ -688,7 +687,7 @@
             @endif
             @endif
         </div>
-    </div>
+   
 </div>
 
 
