@@ -45,28 +45,36 @@
 
                                 // Fetch session details from Mainrooms array if not found in rooms array
                                 $selectedMainSession = $Mainrooms[$roomIndex]['sessions'][$session->session_id] ?? null;
-
+                                $selectedAdditionalSession = $Additionalrooms[$roomIndex]['sessions'][$session->session_id] ?? null;
                                 // Prepare session details, checking both rooms and Mainrooms
                                 $sessionDetails = null;
 
                                 // First, check if the session is in rooms
-                                if ($selectedSession) {
                                 $sessionDetails = [
                                 'roomName' => $rooms[$roomIndex]['roomName'] ?? 'Unknown Room',
                                 'sessionName' => $selectedSession['name'] ?? 'Unknown Session',
                                 'startTime' => $selectedSession['start_time'] ?? 'N/A',
                                 'endTime' => $selectedSession['end_time'] ?? 'N/A',
                                 ];
-                                }
 
                                 // Then, check if the session is in Mainrooms and update sessionDetails if it's not already set
-                                if ($selectedMainSession && !$sessionDetails) {
+                                if (!$sessionDetails) {
                                 $sessionDetails = [
                                 'roomName' => $Mainrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
                                 'sessionName' => $selectedMainSession['name'] ?? 'Unknown Session',
                                 'startTime' => $selectedMainSession['start_time'] ?? 'N/A',
                                 'endTime' => $selectedMainSession['end_time'] ?? 'N/A',
                                 ];
+                               
+                                }
+
+                                if(!$sessionDetails){
+                                    $sessionDetails = [
+                                    'roomName' => $Additionalrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                                    'sessionName' => $selectedAdditionalSession['name'] ?? 'Unknown Session',
+                                    'startTime' => $selectedAdditionalSession['start_time'] ?? 'N/A',
+                                    'endTime' => $selectedAdditionalSession['end_time'] ?? 'N/A',
+                                    ];
                                 }
 
                                 @endphp
@@ -74,7 +82,7 @@
                                 @if ($sessionDetails)
                                 <p>Room: {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
                                 @else
-                                <p>Room: Unknown, Session: Unknown</p>
+                                <p>Room: Unknown, Session: Unknown </p>
                                 @endif
                                 @endforeach
 
