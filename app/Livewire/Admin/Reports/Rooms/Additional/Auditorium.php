@@ -7,10 +7,17 @@ use App\Models\EventRegistrationSession;
 
 class Auditorium extends Component
 {
-    public $users, $students, $parents, $total;
+    public $users, $students, $parents, $total, $search;
     public function render()
     {
-        $this->users = EventRegistrationSession::where('course_id', 3)->get();
+        $this->users = EventRegistrationSession::where('course_id', 3)
+        ->where(function ($query) {
+            $query->whereHas('eventRegistration', function ($subQuery) {
+                $subQuery->where('first_name', 'like', '%' . $this->search . '%')
+                    ->orWhere('phone', 'like', '%' . $this->search . '%');
+            });
+        })
+        ->get();
 
         $this->students = EventRegistrationSession::
         where('course_id', 3)
