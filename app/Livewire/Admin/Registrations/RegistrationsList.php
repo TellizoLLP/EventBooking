@@ -8,7 +8,7 @@ use Livewire\Component;
 class RegistrationsList extends Component
 
 {
-    public $registrations;
+    public $registrations, $search = '';
 
     public $rooms = [
         [
@@ -348,11 +348,16 @@ class RegistrationsList extends Component
         ],
     ];
 
-   
+
 
     public function render()
     {
-        $this->registrations = EventRegistration::with('eventRegistrationSessions')->get();
+        $this->registrations = EventRegistration::with('eventRegistrationSessions')
+            ->when($this->search, function ($query) {
+                $query->where('first_name', 'like', '%' . $this->search . '%')
+                    ->orWhere('last_name', 'like', '%' . $this->search . '%');
+            })
+            ->get();
         return view('livewire.admin.registrations.registrations-list');
     }
 }
