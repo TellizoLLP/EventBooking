@@ -340,7 +340,7 @@
                                                 @php
                                                 $slots = getFilledSlots($roomIndex, $session['id']);
                                                 @endphp
-                                                <p>{{ $slots['filled'] }}/40</p>
+                                                <p>{{ $slots['filled'] }}/{{$session['slots']}}</p>
                                             </div>
                                         </div>
                                     </div>
