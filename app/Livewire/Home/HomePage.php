@@ -430,7 +430,7 @@ class HomePage extends Component
             'referral_method' => 'required',
         ]);
 
-        $this->page = 4;
+        $this->page = 5;
     }
 
    
@@ -509,7 +509,7 @@ class HomePage extends Component
         }
     }
 
-    if($this->current_status==2) {
+   
         foreach ($this->selectedAdditionalSessions as $roomIndex => $sessionId) {
             // Ensure the session ID exists before saving
             if ($sessionId) {
@@ -531,13 +531,13 @@ class HomePage extends Component
                 }
             }
         }
-    }
+    
        // $this->reset();
-        try {
-            Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));
-        } catch (\Exception $e) {
-          //  dd($e);
-        }
+        // try {
+        //     Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));
+        // } catch (\Exception $e) {
+        //   //  dd($e);
+        // }
         $this->page = 4;
        // return redirect()->route('page-1', ['id' => $eventRegistration->id]);
     }
