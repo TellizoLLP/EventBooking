@@ -31,25 +31,25 @@
                     REPORTS
                 </a>
                 <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('registrations')}}">
+                    <a class='sidebar-link' href="{{route('reports.registrations')}}">
                         <i class="align-middle" data-feather="calendar"></i>
                         <span class="align-middle">Registration Report</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('registrations')}}">
+                    <a class='sidebar-link' href="{{route('reports.sessions')}}">
                         <i class="align-middle" data-feather="calendar"></i>
                         <span class="align-middle">Session Report</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('registrations')}}">
+                    <a class='sidebar-link' href="{{route('reports.students')}}">
                         <i class="align-middle" data-feather="calendar"></i>
                         <span class="align-middle">Students Report</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('registrations')}}">
+                    <a class='sidebar-link' href="{{route('reports.parents')}}">
                         <i class="align-middle" data-feather="calendar"></i>
                         <span class="align-middle">Parents Report</span>
                     </a>
