@@ -632,6 +632,14 @@ class HomePage extends Component
 
     public function selectSession($roomIndex, $sessionId)
     {
+        if (count($this->selectedSessions) >= 3) {
+            $this->dispatch('alert', [
+                'type' => 'error',
+                'message' => "You can't select more than 3 sessions!",
+            ]);
+            return; 
+        }
+        
         $slots = getFilledSlotsMain($roomIndex, $sessionId);
         if($slots['filled'] >= 40) {
             return;
