@@ -721,7 +721,7 @@ class HomePage extends Component
     }
     public function selectAdditionalSession($roomIndex, $sessionId)
     {
-        $this->selectedAdditionalSessions = [];
+     //   $this->selectedAdditionalSessions = [];
             if ($this->current_status == 1) {
                 foreach ($this->selectedSessions as $existingRoomIndex => $existingSessionId) {
                     if (isset($existingSessionId) && ($existingSessionId-1) === $roomIndex) {
