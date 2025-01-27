@@ -137,107 +137,67 @@
             </div>
         </div>
 
-        <div class="row g-4">
-            <!-- Speciality Section -->
-            <div class="col-12 col-lg-6 d-flex">
-                <div class="card flex-fill w-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0">Speciality</h5>
-                        <select class="form-select w-auto" id="specialityRoomSelect" onchange="updateSpecialityRoomReport()">
-                            <option value="Room1">Room 1</option>
-                            <option value="Room2">Room 2</option>
-                            <option value="Room3">Room 3</option>
-                        </select>
-                    </div>
-                    <div class="card-body pt-2 pb-3">
-                        <div class="row g-3">
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Total Seats</h5>
-                                        <h1 class="mt-1 mb-3">20</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Available Seats</h5>
-                                        <h1 class="mt-1 mb-3">15</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Total Registrations</h5>
-                                        <h1 class="mt-1 mb-3">{{$bookings}}</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Total Sessions</h5>
-                                        <h1 class="mt-1 mb-3">44</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <main class="content p-3">
+    <div class="container-fluid p-0">
+        <div class="col-12 col-xl-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center border-bottom pb-2">
+                    <h2 class="card-title mb-0">Recent Registration</h2>
                 </div>
-            </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                           
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php $slNo = 1; @endphp
+                        <!-- Students -->
+                        @foreach ($students as $item)
+                            <tr>
+                                
+                                <td>{{ $item->first_name }}</td>
+                                <td>{{ $item->last_name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td>
+                                    <span class="badge bg-success">Student</span>
+                                </td>
+                            </tr>
+                        @endforeach
 
-            <!-- Micro-Courses Section -->
-            <div class="col-12 col-lg-6 d-flex">
-                <div class="card flex-fill w-100">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0">Micro-Courses</h5>
-                <select class="form-select w-auto" id="specialityRoomSelect" onchange="updateSpecialityRoomReport()">
-                    <option value="Room1">Room 1</option>
-                    <option value="Room2">Room 2</option>
-                    <option value="Room3">Room 3</option>
-                </select>
-            </div>
-                    <div class="card-body pt-2 pb-3">
-                        <div class="row g-3">
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Total Seats</h5>
-                                        <h1 class="mt-1 mb-3">20</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Available Seats</h5>
-                                        <h1 class="mt-1 mb-3">15</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Total Registrations</h5>
-                                        <h1 class="mt-1 mb-3">{{$bookings}}</h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-6">
-                                <div class="card h-100 d-flex justify-content-center align-items-center">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Total Sessions</h5>
-                                        <h1 class="mt-1 mb-3">44</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <!-- Parents -->
+                        @foreach ($parents as $item)
+                            <tr>
+                              
+                                <td>{{ $item->first_name }}</td>
+                                <td>{{ $item->last_name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td>
+                                    <span class="badge bg-warning">Parent</span>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        @if ($students->isEmpty() && $parents->isEmpty())
+                            <tr>
+                                <td colspan="6" class="text-center">No records found.</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
+</main>
+
+
 
     </div>
 </main>
