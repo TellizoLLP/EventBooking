@@ -39,23 +39,23 @@
             <li class="sidebar-item  ">
                 <a data-bs-target="#pages" data-bs-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle" data-feather="credit-card"></i>
-                    <span class="align-middle">Medzone-Experience </span>
+                    <span class="align-middle">Specialty</span>
                 </a>
                 <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item "><a class='sidebar-link' href="{{route('reports.rooms.four')}}">Room 4</a> </li>
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 5</a> </li>
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 6</a> </li>
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Studio 3</a> </li>
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Studio 7</a> </li>
+                    <li class="sidebar-item "><a class='sidebar-link' href="{{route('reports.rooms.specialty.room2')}}">Room 4</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.specialty.room3')}}">Room 5</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.specialty.room0')}}">Room 6</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.specialty.room4')}}">Studio 3</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.specialty.room1')}}">Studio 7</a> </li>
                 </ul>
             </li>
-            <li class="sidebar-item  ">
+            <li class="sidebar-item  "> 
                 <a data-bs-target="#micro" data-bs-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle" data-feather="credit-card"></i>
                     <span class="align-middle">Micro-Course </span>
                 </a>
                 <ul id="micro" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item "><a class='sidebar-link' href="{{route('reports.rooms.four')}}">Room 4</a> </li>
+
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 5</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 6</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Main Auditorium </a> </li>

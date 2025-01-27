@@ -22,7 +22,13 @@ Route::group(['middleware' => [AdminMiddleware::class]], function () {
         Route::get('/students', \App\Livewire\Admin\Reports\StudentsReport::class)->name('reports.students');
         Route::get('/parents', \App\Livewire\Admin\Reports\ParentsReport::class)->name('reports.parents');
         Route::group(['prefix' => 'room'], function () {
-            Route::get('/four', \App\Livewire\Admin\Reports\Rooms\RoomFour::class)->name('reports.rooms.four');
+            Route::group(['prefix' => 'speciality'], function () {
+            Route::get('/room0', \App\Livewire\Admin\Reports\Rooms\Specilaity\Room0::class)->name('reports.rooms.specialty.room0');
+            Route::get('/room1', \App\Livewire\Admin\Reports\Rooms\Specilaity\Room1::class)->name('reports.rooms.specialty.room1');
+            Route::get('/room2', \App\Livewire\Admin\Reports\Rooms\Specilaity\Room2::class)->name('reports.rooms.specialty.room2');
+            Route::get('/room3', \App\Livewire\Admin\Reports\Rooms\Specilaity\Room3::class)->name('reports.rooms.specialty.room3');
+            Route::get('/room4', \App\Livewire\Admin\Reports\Rooms\Specilaity\Room4::class)->name('reports.rooms.specialty.room4');
+            });
         });
     });
 });
