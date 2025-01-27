@@ -14,6 +14,16 @@
                             <i class="align-middle" data-feather="search"></i>
                         </button>
                     </div>
+                    <div class="input-group input-group-navbar w-25">
+                        <select class="form-control" 
+                            wire:model.live="session_filter">
+                            <option value="">All Sessions</option>
+                            <option value="0">Parents’ workshop</option>
+                            <option value="1">Environmental Health</option>
+                            <option value="2">Sports Health</option>
+                            <option value="3">Financial Awareness</option>
+                        </select>
+                    </div>
                 </div>
                 <table class="table table-bordered">
                     <thead>
