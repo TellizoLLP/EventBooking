@@ -27,6 +27,25 @@
                     <span class="align-middle">Registrations</span>
                 </a>
             </li>
+            <li class="sidebar-header">
+                    REPORTS
+                </a>
+                <li class="sidebar-item">
+                    <a class='sidebar-link' href="{{route('registrations')}}">
+                        <i class="align-middle" data-feather="calendar"></i>
+                        <span class="align-middle">Booking Report</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class='sidebar-link' href="{{route('registrations')}}">
+                        <i class="align-middle" data-feather="calendar"></i>
+                        <span class="align-middle">Room Wise Report</span>
+                    </a>
+                </li>
+            </li>
+            <li class="sidebar-header">
+                TOOLS
+            </li>
             <li class="sidebar-item">
                 <a class='sidebar-link' wire:click="logout">
                     <i class="align-middle" data-feather="log-out"></i>
