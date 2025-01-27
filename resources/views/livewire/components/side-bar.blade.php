@@ -33,13 +33,25 @@
                 <li class="sidebar-item">
                     <a class='sidebar-link' href="{{route('registrations')}}">
                         <i class="align-middle" data-feather="calendar"></i>
-                        <span class="align-middle">Booking Report</span>
+                        <span class="align-middle">Registration Report</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a class='sidebar-link' href="{{route('registrations')}}">
                         <i class="align-middle" data-feather="calendar"></i>
-                        <span class="align-middle">Room Wise Report</span>
+                        <span class="align-middle">Session Report</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class='sidebar-link' href="{{route('registrations')}}">
+                        <i class="align-middle" data-feather="calendar"></i>
+                        <span class="align-middle">Students Report</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class='sidebar-link' href="{{route('registrations')}}">
+                        <i class="align-middle" data-feather="calendar"></i>
+                        <span class="align-middle">Parents Report</span>
                     </a>
                 </li>
             </li>
