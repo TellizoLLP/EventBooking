@@ -611,7 +611,7 @@
             </div>
         </div>
 
-        <div class="bg-gray-100 h-full w-full p-6">
+        <div class="bg-gray-100 w-full p-6">
             <div class="bg-white p-6  rounded-lg shadow" x-show="page == 4"
                 x-transition:enter="transition-opacity transform ease-out duration-500"
                 x-transition:enter-start="opacity-0 -translate-x-full"
