@@ -139,7 +139,7 @@
 
 
                                 @if ($sessionDetails)
-                                <p >{{ $sessionDetails['roomName'] }} , Session :  {{ $sessionDetails['sessionName'] }} {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</p>
+                                <p >{{ $sessionDetails['roomName'] }} , Session :  {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
                                 @else
                                 <p>Room: Unknown, Session: Unknown</p>
                                 @endif

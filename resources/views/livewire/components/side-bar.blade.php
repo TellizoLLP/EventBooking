@@ -49,9 +49,10 @@
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.specialty.room1')}}">Studio 7</a> </li>
                 </ul>
             </li>
-            <li class="sidebar-item  "> 
+            <li class="sidebar-item  ">
                 <a data-bs-target="#micro" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="credit-card"></i>
+                    <i class="align-middle" data-feather="list"></i>
+
                     <span class="align-middle">Micro-Course </span>
                 </a>
                 <ul id="micro" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -59,20 +60,21 @@
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room3')}}">Room 5</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room1')}}">Room 6</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room2')}}">Main Auditorium </a> </li>
-                    
+
                 </ul>
             </li>
             <li class="sidebar-item  ">
                 <a data-bs-target="#additional" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="credit-card"></i>
+                    <i class="align-middle" data-feather="clipboard"></i>
+
                     <span class="align-middle">Additional Sessions</span>
                 </a>
                 <ul id="additional" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.additional.auditorium')}}">Main Auditorium </a> </li>
-                    
+
                 </ul>
             </li>
-           
+
             <li class="sidebar-item">
                 <a class='sidebar-link' href="{{route('reports.students')}}">
                     <i class="align-middle" data-feather="book"></i>

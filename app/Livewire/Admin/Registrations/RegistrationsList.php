@@ -346,6 +346,20 @@ class RegistrationsList extends Component
                 ],
             ],
         ],
+        [
+            'roomName' => 'Main auditorium',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'Financial Awareness',
+                    'session' => 'Financial Awareness',
+                    'start_time' => '5:30 pm',
+                    'end_time' => '6:00 pm',
+                    'clickable' => true,
+                    'slots' => '0',
+                ],
+            ],
+        ],
     ];
 
 
