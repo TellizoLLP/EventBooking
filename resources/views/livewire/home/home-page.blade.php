@@ -1,5 +1,5 @@
 <div class="h-screen w-screen flex flex-col overflow-clip" x-data="alpineSystem">
-    <div class="h-[calc(100vh-2rem)] overflow-y-auto w-full">
+    <div class="h-[calc(100vh-0.1rem)] overflow-y-auto w-full">
         <div class="w-full h-2 flex">
             <div class="w-[25%] h-2 bg-[#d4f100]"></div>
             <div class="w-[25%] h-2 bg-[#50805b]"></div>
@@ -385,7 +385,7 @@
                             <div class="flex gap-2">
 
                                 <div class="flex justify-end">
-                                    <div class="flex justify-end">
+                                    <div class="flex justify-end gap-2">
                                         <button @click="$wire.backPageTwo()" wire:loading.attr="disabled"
                                             class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#0b0202] disabled:bg-[#285a496a] text-white rounded-lg">
                                             Back
