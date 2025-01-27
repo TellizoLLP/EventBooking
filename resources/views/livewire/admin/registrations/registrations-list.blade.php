@@ -33,7 +33,7 @@
                             <td>{{$item->first_name}} {{$item->last_name}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->phone}}</td>
-                            <td> {{ $item->current_status == 1 ? 'Student' : 'Parent' }}</td>
+                            <td> <span class="badge {{ $item->current_status == 1 ? 'bg-success' : 'bg-warning' }}">{{ $item->current_status == 1 ? 'Student' : 'Parent' }}</span></td>
                             <td>
                                 @php
                                 $current_registration_id = $item['id'];
