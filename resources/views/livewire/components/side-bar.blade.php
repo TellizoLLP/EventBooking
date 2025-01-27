@@ -55,7 +55,6 @@
                     <span class="align-middle">Micro-Course </span>
                 </a>
                 <ul id="micro" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 5</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 6</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Main Auditorium </a> </li>
@@ -68,7 +67,7 @@
                     <span class="align-middle">Additional Sessions</span>
                 </a>
                 <ul id="additional" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Main Auditorium </a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.additional.auditorium')}}">Main Auditorium </a> </li>
                     
                 </ul>
             </li>

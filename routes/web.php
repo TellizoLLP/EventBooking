@@ -29,6 +29,9 @@ Route::group(['middleware' => [AdminMiddleware::class]], function () {
             Route::get('/room3', \App\Livewire\Admin\Reports\Rooms\Specilaity\Room3::class)->name('reports.rooms.specialty.room3');
             Route::get('/room4', \App\Livewire\Admin\Reports\Rooms\Specilaity\Room4::class)->name('reports.rooms.specialty.room4');
             });
+            Route::group(['prefix' => 'additional'], function () {
+                Route::get('/additional', \App\Livewire\Admin\Reports\Rooms\Additional\Auditorium::class)->name('reports.rooms.additional.auditorium');
+            });
         });
     });
 });
