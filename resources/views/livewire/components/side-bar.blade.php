@@ -28,32 +28,32 @@
                 </a>
             </li>
             <li class="sidebar-header">
-                    REPORTS
+                REPORTS
                 </a>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('reports.registrations')}}">
-                        <i class="align-middle" data-feather="calendar"></i>
-                        <span class="align-middle">Registration Report</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('reports.sessions')}}">
-                        <i class="align-middle" data-feather="calendar"></i>
-                        <span class="align-middle">Session Report</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('reports.students')}}">
-                        <i class="align-middle" data-feather="calendar"></i>
-                        <span class="align-middle">Students Report</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class='sidebar-link' href="{{route('reports.parents')}}">
-                        <i class="align-middle" data-feather="calendar"></i>
-                        <span class="align-middle">Parents Report</span>
-                    </a>
-                </li>
+            <li class="sidebar-item">
+                <a class='sidebar-link' href="{{route('reports.registrations')}}">
+                    <i class="align-middle" data-feather="users"></i>
+                    <span class="align-middle">Participants</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class='sidebar-link' href="{{route('reports.sessions')}}">
+                    <i class="align-middle" data-feather="play-circle"></i>
+                    <span class="align-middle">Sessions</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class='sidebar-link' href="{{route('reports.students')}}">
+                    <i class="align-middle" data-feather="book"></i>
+                    <span class="align-middle">Students</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class='sidebar-link' href="{{route('reports.parents')}}">
+                    <i class="align-middle" data-feather="user-check"></i>
+                    <span class="align-middle">Parents</span>
+                </a>
+            </li>
             </li>
             <li class="sidebar-header">
                 TOOLS

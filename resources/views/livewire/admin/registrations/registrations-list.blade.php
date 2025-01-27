@@ -17,7 +17,7 @@
                 </div>
                 <table class="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>Sl No.</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -28,12 +28,12 @@
                     </thead>
                     <tbody>
                         @foreach ($registrations as $item )
-                        <tr>
+                        <tr class="text-center">
                             <td>{{$loop->index+1}}</td>
                             <td>{{$item->first_name}} {{$item->last_name}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->phone}}</td>
-                            <td> {{ $item->current_status == 1 ? 'Student' : 'Parent' }}</td>
+                            <td> <span class="badge {{ $item->current_status == 1 ? 'bg-success' : 'bg-warning' }}">{{ $item->current_status == 1 ? 'Student' : 'Parent' }}</span></td>
                             <td>
                                 @php
                                 $current_registration_id = $item['id'];
