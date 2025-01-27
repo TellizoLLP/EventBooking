@@ -702,6 +702,17 @@ class HomePage extends Component
     public function selectAdditionalSession($roomIndex, $sessionId)
     {
         $this->selectedAdditionalSessions = [];
-        $this->selectedAdditionalSessions[$roomIndex] = $sessionId;
+            if ($this->current_status == 1) {
+                foreach ($this->selectedSessions as $existingRoomIndex => $existingSessionId) {
+                    if (isset($existingSessionId) && ($existingSessionId-1) === $roomIndex) {
+                        $this->dispatch('alert', [
+                            'type' => 'error',
+                            'message' => 'This session is already selected for another room!',
+                        ]);
+                        return; 
+                    }
+                }
+            }
+            $this->selectedAdditionalSessions[$roomIndex] = $sessionId;
     }
 }
