@@ -13,8 +13,8 @@ use Illuminate\Queue\SerializesModels;
 class RegistrationCreated extends Mailable
 {
     use Queueable, SerializesModels;
-    public $first_name = '',$last_name,$email,$phone,$referral_method,$school_name,$school_grade;
-    public $current_status,$items,$itemsMicro,$itemsAdditional;
+    public $first_name = '', $last_name, $email, $phone, $referral_method, $school_name, $school_grade;
+    public $current_status, $items, $itemsMicro, $itemsAdditional;
 
     public $rooms = [
         [
@@ -325,7 +325,7 @@ class RegistrationCreated extends Mailable
                     'end_time' => '12:00 pm',
                     'clickable' => true,
                     'slots' => '0',
-                ],  
+                ],
             ],
         ],
         [
@@ -356,15 +356,29 @@ class RegistrationCreated extends Mailable
                 ],
             ],
         ],
+        [
+            'roomName' => 'Main auditorium',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'Financial Awareness',
+                    'session' => 'Financial Awareness',
+                    'start_time' => '5:30 pm',
+                    'end_time' => '6:00 pm',
+                    'clickable' => true,
+                    'slots' => '0',
+                ],
+            ],
+        ],
     ];
     /**
      * Create a new message instance.
      */
     public function __construct(public EventRegistration $registration)
     {
-       $this->first_name = $registration->first_name;
+        $this->first_name = $registration->first_name;
 
-       $this->last_name = $registration->last_name;
+        $this->last_name = $registration->last_name;
         $this->email = $registration->email;
         $this->phone = $registration->phone;
         $this->referral_method = $registration->referral_method;
