@@ -15,7 +15,7 @@ class HomePage extends Component
     public $selectedSessions = [];
     public $selectedMainSessions = [];
     public $selectedAdditionalSessions = [];
-    public $disabledTimeSlots = [], $current_registration_id='';
+    public $disabledTimeSlots = [], $current_registration_id = '';
 
     public $rooms = [
         [
@@ -326,7 +326,7 @@ class HomePage extends Component
                     'end_time' => '12:30 pm',
                     'clickable' => true,
                     'slots' => '0',
-                ],  
+                ],
             ],
         ],
         [
@@ -380,19 +380,22 @@ class HomePage extends Component
 
     public function pageOneSave()
     {
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:event_registrations,email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required',
-        ],[
-            'school_name.required_if' => 'The school name field is required.',
-            'school_grade.required_if' => 'The school grade field is required.',]
-    );
+        $this->validate(
+            [
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:event_registrations,email',
+                'phone' => 'required|string',
+                'current_status' => 'required',
+                'school_name' => 'required_if:current_status,1',
+                'school_grade' => 'required_if:current_status,1',
+                'referral_method' => 'required',
+            ],
+            [
+                'school_name.required_if' => 'The school name field is required.',
+                'school_grade.required_if' => 'The school grade field is required.',
+            ]
+        );
 
         if ($this->current_status == 1) {
             $this->page = 2;
@@ -433,7 +436,7 @@ class HomePage extends Component
         $this->page = 5;
     }
 
-   
+
     public function backPageOne()
     {
         $this->validate([
@@ -505,61 +508,61 @@ class HomePage extends Component
         $eventRegistration->email = $this->email;
         $eventRegistration->phone = $this->phone;
         $eventRegistration->current_status = $this->current_status;
-        if($this->current_status==1) {
-        $eventRegistration->school_name = $this->school_name;
-        $eventRegistration->school_grade = $this->school_grade;
+        if ($this->current_status == 1) {
+            $eventRegistration->school_name = $this->school_name;
+            $eventRegistration->school_grade = $this->school_grade;
         }
         $eventRegistration->referral_method = $this->referral_method;
         $eventRegistration->save();
         $this->current_registration_id = $eventRegistration->id;
-        if($this->current_status==1) {
+        if ($this->current_status == 1) {
 
-        foreach ($this->selectedSessions as $roomIndex => $sessionId) {
-            // Ensure the session ID exists before saving
-            if ($sessionId) {
-                // Get the selected session from the sessions array
-                $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+            foreach ($this->selectedSessions as $roomIndex => $sessionId) {
+                // Ensure the session ID exists before saving
+                if ($sessionId) {
+                    // Get the selected session from the sessions array
+                    $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
 
-                // Ensure that the session exists
-                if ($selectedSession) {
-                    // Create the event registration session
-                    EventRegistrationSession::create([
-                        'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
-                        'course_id' => 1, // Assuming this is set in your class
-                        'room_id' => $roomIndex, // Use room index or adjust based on your structure
-                        'session_id' => $sessionId, // Selected session ID
-                    ]);
-                } else {
-                    // Handle case where the session is not found in the room
-                    Log::error("Session with ID {$sessionId} not found in Room {$roomIndex}");
+                    // Ensure that the session exists
+                    if ($selectedSession) {
+                        // Create the event registration session
+                        EventRegistrationSession::create([
+                            'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
+                            'course_id' => 1, // Assuming this is set in your class
+                            'room_id' => $roomIndex, // Use room index or adjust based on your structure
+                            'session_id' => $sessionId, // Selected session ID
+                        ]);
+                    } else {
+                        // Handle case where the session is not found in the room
+                        Log::error("Session with ID {$sessionId} not found in Room {$roomIndex}");
+                    }
+                }
+            }
+
+            foreach ($this->selectedMainSessions as $roomIndex => $sessionId) {
+                // Ensure the session ID exists before saving
+                if ($sessionId) {
+                    // Get the selected session from the sessions array
+                    $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+
+                    // Ensure that the session exists
+                    if ($selectedSession) {
+                        // Create the event registration session
+                        EventRegistrationSession::create([
+                            'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
+                            'course_id' => 2, // Assuming this is set in your class
+                            'room_id' => $roomIndex, // Use room index or adjust based on your structure
+                            'session_id' => $sessionId, // Selected session ID
+                        ]);
+                    } else {
+                        // Handle case where the session is not found in the room
+                        Log::error("Session with ID {$sessionId} not found in Room {$roomIndex}");
+                    }
                 }
             }
         }
 
-        foreach ($this->selectedMainSessions as $roomIndex => $sessionId) {
-            // Ensure the session ID exists before saving
-            if ($sessionId) {
-                // Get the selected session from the sessions array
-                $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
 
-                // Ensure that the session exists
-                if ($selectedSession) {
-                    // Create the event registration session
-                    EventRegistrationSession::create([
-                        'event_registration_id' => $eventRegistration->id, // Assuming this is set in your class
-                        'course_id' => 2, // Assuming this is set in your class
-                        'room_id' => $roomIndex, // Use room index or adjust based on your structure
-                        'session_id' => $sessionId, // Selected session ID
-                    ]);
-                } else {
-                    // Handle case where the session is not found in the room
-                    Log::error("Session with ID {$sessionId} not found in Room {$roomIndex}");
-                }
-            }
-        }
-    }
-
-   
         foreach ($this->selectedAdditionalSessions as $roomIndex => $sessionId) {
             // Ensure the session ID exists before saving
             if ($sessionId) {
@@ -581,15 +584,15 @@ class HomePage extends Component
                 }
             }
         }
-    
-       // $this->reset();
+
+        // $this->reset();
         try {
             Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));
         } catch (\Exception $e) {
-          //  dd($e);
+            //  dd($e);
         }
         $this->page = 4;
-       // return redirect()->route('page-1', ['id' => $eventRegistration->id]);
+        // return redirect()->route('page-1', ['id' => $eventRegistration->id]);
     }
 
     // public function selectSession($roomIndex, $sessionId)
@@ -632,59 +635,68 @@ class HomePage extends Component
 
     public function selectSession($roomIndex, $sessionId)
     {
+        // Check if the session is already selected
+        if (isset($this->selectedSessions[$roomIndex]) && $this->selectedSessions[$roomIndex] === $sessionId) {
+            // Deselect the session
+            $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+            $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$selectedSession['start_time']]);
+            unset($this->selectedSessions[$roomIndex]);
+            return;
+        }
+
         if (count($this->selectedSessions) >= 3) {
             $this->dispatch('alert', [
                 'type' => 'error',
                 'message' => "You can't select more than 3 sessions!",
             ]);
-            return; 
+            return;
         }
-        
+
         $slots = getFilledSlotsMain($roomIndex, $sessionId);
-        if($slots['filled'] >= 40) {
+        if ($slots['filled'] >= 40) {
             return;
         } else {
-        // Find the selected session details
-        $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+            // Find the selected session details
+            $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
 
-        // If the session's start_time is already disabled, do nothing
-        if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
-            return;
-        }
-
-        // Check if the room already has a selected session
-        if (isset($this->selectedSessions[$roomIndex])) {
-            // Remove the current session's start_time from disabledTimeSlots
-            $currentSessionId = $this->selectedSessions[$roomIndex];
-            $currentSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $currentSessionId);
-            $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$currentSession['start_time']]);
-        }
-
-        // If the total selected sessions exceed the limit, remove the oldest selected session
-        if (count($this->selectedSessions) >= 3) {
-            // Remove the oldest session and its start_time
-            if (!isset($this->selectedSessions[$roomIndex])) {
-                $removedSessionId =  array_pop($this->selectedSessions);
-                $removedSessionStartTime = collect($this->rooms)->flatMap(function ($room) {
-                    return $room['sessions'];
-                })->firstWhere('id', $removedSessionId)['start_time'];
-                $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
+            // If the session's start_time is already disabled, do nothing
+            if (in_array($selectedSession['start_time'], $this->disabledTimeSlots)) {
+                return;
             }
-        }
 
-        // Add the new session to the selectedSessions and disable its time slot
-        $this->selectedSessions[$roomIndex] = $sessionId;
-        $this->disabledTimeSlots[] = $selectedSession['start_time'];
-    }
+            // Check if the room already has a selected session
+            if (isset($this->selectedSessions[$roomIndex])) {
+                // Remove the current session's start_time from disabledTimeSlots
+                $currentSessionId = $this->selectedSessions[$roomIndex];
+                $currentSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $currentSessionId);
+                $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$currentSession['start_time']]);
+            }
+
+            // If the total selected sessions exceed the limit, remove the oldest selected session
+            if (count($this->selectedSessions) >= 3) {
+                // Remove the oldest session and its start_time
+                if (!isset($this->selectedSessions[$roomIndex])) {
+                    $removedSessionId =  array_pop($this->selectedSessions);
+                    $removedSessionStartTime = collect($this->rooms)->flatMap(function ($room) {
+                        return $room['sessions'];
+                    })->firstWhere('id', $removedSessionId)['start_time'];
+                    $this->disabledTimeSlots = array_diff($this->disabledTimeSlots, [$removedSessionStartTime]);
+                }
+            }
+
+            // Add the new session to the selectedSessions and disable its time slot
+            $this->selectedSessions[$roomIndex] = $sessionId;
+            $this->disabledTimeSlots[] = $selectedSession['start_time'];
+        }
     }
     public function selectMainSession($roomIndex, $sessionId)
     {
         $slots = getFilledSlotsMain($roomIndex, $sessionId);
-        if($slots['filled'] >= 40) {
+        if ($slots['filled'] >= 40) {
             return;
         } else {
-        $this->selectedMainSessions = [];
-        $this->selectedMainSessions[$roomIndex] = $sessionId;
+            $this->selectedMainSessions = [];
+            $this->selectedMainSessions[$roomIndex] = $sessionId;
         }
     }
     public function selectAdditionalSession($roomIndex, $sessionId)
