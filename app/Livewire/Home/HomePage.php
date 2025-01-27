@@ -430,11 +430,61 @@ class HomePage extends Component
             'referral_method' => 'required',
         ]);
 
-        $this->page = 4;
+        $this->page = 5;
     }
 
    
+    public function backPageOne()
+    {
+        $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:event_registrations,email',
+            'phone' => 'required|string',
+            'current_status' => 'required',
+            'school_name' => 'required_if:current_status,1',
+            'school_grade' => 'required_if:current_status,1',
+            'referral_method' => 'required',
+        ]);
 
+        $this->page = 1;
+    }
+
+
+    public function backPageTwo()
+    {
+        $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:event_registrations,email',
+            'phone' => 'required|string',
+            'current_status' => 'required',
+            'school_name' => 'required_if:current_status,1',
+            'school_grade' => 'required_if:current_status,1',
+            'referral_method' => 'required',
+        ]);
+
+        $this->page = 2;
+    }
+
+    public function backPageThree()
+    {
+        $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:event_registrations,email',
+            'phone' => 'required|string',
+            'current_status' => 'required',
+            'school_name' => 'required_if:current_status,1',
+            'school_grade' => 'required_if:current_status,1',
+            'referral_method' => 'required',
+        ]);
+        if ($this->current_status == 1) {
+            $this->page = 3;
+        } else {
+            $this->page = 1;
+        }
+    }
     public function save()
     {
         $this->validate([
@@ -509,7 +559,7 @@ class HomePage extends Component
         }
     }
 
-    if($this->current_status==2) {
+   
         foreach ($this->selectedAdditionalSessions as $roomIndex => $sessionId) {
             // Ensure the session ID exists before saving
             if ($sessionId) {
@@ -531,7 +581,7 @@ class HomePage extends Component
                 }
             }
         }
-    }
+    
        // $this->reset();
         try {
             Mail::to($eventRegistration->email)->send(new RegistrationCreated($eventRegistration));

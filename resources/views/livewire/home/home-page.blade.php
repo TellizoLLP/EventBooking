@@ -164,6 +164,13 @@
                                 below</div>
                         </div>
                         <div class="flex gap-2">
+                        <div class="flex justify-end">
+                                <button @click="$wire.backPageOne()" wire:loading.attr="disabled"
+                                    class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#0b0202] disabled:bg-[#285a496a] text-white rounded-lg">
+                                    Back
+                                    <span class="loader" wire:loading></span>
+                                </button>
+                            </div>
                             <button @click="$wire.pageTwoSave()" wire:loading.attr="disabled"
                                 class="text-sm font-semibold text-neutral-500 bg-neutral-100 px-3 py-2 rounded-lg antialiased">Skip</button>
                             <div class="flex justify-end">
@@ -323,6 +330,7 @@
                                                 <p>{{ $session['clickable'] ? 'Click to select' : 'Not selectable' }}
                                                 </p>
                                             </div>
+                                            
                                             <div class="flex items-center gap-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
                                                     viewBox="0 0 24 24">
@@ -377,9 +385,16 @@
                             <div class="flex gap-2">
 
                                 <div class="flex justify-end">
-                                    <button @click="$wire.save()" wire:loading.attr="disabled"
+                                <div class="flex justify-end">
+                                <button @click="$wire.backPageTwo()" wire:loading.attr="disabled"
+                                    class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#0b0202] disabled:bg-[#285a496a] text-white rounded-lg">
+                                    Back
+                                    <span class="loader" wire:loading></span>
+                                </button>
+                            </div>
+                                    <button @click="$wire.pageThreeSave()" wire:loading.attr="disabled"
                                         class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
-                                        Register
+                                        Next
                                         <span class="loader" wire:loading></span>
                                     </button>
                                 </div>
@@ -485,6 +500,13 @@
                         <div class="flex gap-2">
 
                             <div class="flex justify-end">
+                            <div class="flex justify-end">
+                                <button @click="$wire.backPageThree()" wire:loading.attr="disabled"
+                                    class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#0b0202] disabled:bg-[#285a496a] text-white rounded-lg">
+                                    Back
+                                    <span class="loader" wire:loading></span>
+                                </button>
+                            </div>
                                 <button @click="$wire.save()" wire:loading.attr="disabled"
                                     class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#285a49] disabled:bg-[#285a496a] text-white rounded-lg">
                                     Register
@@ -526,6 +548,33 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="my-4 border-t border-gray-200/30 pt-4">
+                                            <div class="flex justify-between items-center">
+                                                <div>
+                                                    <p class="text-sm font-bold ">
+                                                        {{ $additionalSession['start_time'] }}
+                                                    </p>
+                                                </div>
+                                                <!-- Flight Icon -->
+                                                <div class="text-gray-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-6 "
+                                                        viewBox="0 0 24 24">
+                                                        <path fill="currentColor"
+                                                            d="M12 4c6.928 0 11.258 7.5 7.794 13.5A9 9 0 0 1 12 22C5.072 22 .742 14.5 4.206 8.5A9 9 0 0 1 12 4"
+                                                            class="duoicon-secondary-layer" opacity="0.3" />
+                                                        <path fill="currentColor"
+                                                            d="M7.366 2.971A1 1 0 0 1 7 4.337a10.1 10.1 0 0 0-2.729 2.316a1 1 0 1 1-1.544-1.27a12 12 0 0 1 3.271-2.777a1 1 0 0 1 1.367.365zM18 2.606a12 12 0 0 1 3.272 2.776a1 1 0 0 1-1.544 1.27a10 10 0 0 0-2.729-2.315a1 1 0 0 1 1.002-1.731zM12 8a1 1 0 0 0-.993.883L11 9v3.986c-.003.222.068.44.202.617l.09.104l2.106 2.105a1 1 0 0 0 1.498-1.32l-.084-.094L13 12.586V9a1 1 0 0 0-1-1"
+                                                            class="duoicon-primary-layer" />
+                                                    </svg>
+                                                </div>
+                                                <div>
+                                                    <p class="text-sm font-bold ">
+                                                        {{ $additionalSession['end_time'] }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     <div class="flex justify-between items-center text-sm mt-2">
                                         <div class="flex items-center gap-1">
@@ -704,7 +753,7 @@
                     @endif
 
                     @endif
-                    @if ($current_status == 2)
+                 
                     @if ($itemsAdditional->count() > 0)
                     <div class="col-span-2">
                         <label class="block text-sm font-medium text-gray-600 mb-1">Additional Sessions</label>
@@ -740,7 +789,7 @@
                         @endforeach
                     </div>
                     @endif
-                    @endif
+                  
                 </div>
 
             </div>
