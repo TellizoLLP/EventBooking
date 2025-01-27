@@ -643,8 +643,7 @@ class HomePage extends Component
             unset($this->selectedSessions[$roomIndex]);
             return;
         }
-
-        if (count($this->selectedSessions) >= 3) {
+        if (count($this->selectedSessions) >= 3 && !isset($this->selectedSessions[$roomIndex])) {
             $this->dispatch('alert', [
                 'type' => 'error',
                 'message' => "You can't select more than 3 sessions!",
