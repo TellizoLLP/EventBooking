@@ -55,9 +55,10 @@
                     <span class="align-middle">Micro-Course </span>
                 </a>
                 <ul id="micro" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 5</a> </li>
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 6</a> </li>
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Main Auditorium </a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room0')}}">Room 4</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room3')}}">Room 5</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room1')}}">Room 6</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room2')}}">Main Auditorium </a> </li>
                     
                 </ul>
             </li>

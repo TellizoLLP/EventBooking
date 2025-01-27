@@ -32,6 +32,12 @@ Route::group(['middleware' => [AdminMiddleware::class]], function () {
             Route::group(['prefix' => 'additional'], function () {
                 Route::get('/additional', \App\Livewire\Admin\Reports\Rooms\Additional\Auditorium::class)->name('reports.rooms.additional.auditorium');
             });
+            Route::group(['prefix' => 'micro'], function () {
+                Route::get('/room0', \App\Livewire\Admin\Reports\Rooms\Micro\Room0::class)->name('reports.rooms.micro.room0');
+                Route::get('/room1', \App\Livewire\Admin\Reports\Rooms\Micro\Room1::class)->name('reports.rooms.micro.room1');
+                Route::get('/room2', \App\Livewire\Admin\Reports\Rooms\Micro\Room2::class)->name('reports.rooms.micro.room2');
+                Route::get('/room3', \App\Livewire\Admin\Reports\Rooms\Micro\Room3::class)->name('reports.rooms.micro.room3');
+                });
         });
     });
 });
