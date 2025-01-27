@@ -135,68 +135,109 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
-        <div class="row">
-            <div class="col-12 col-lg-8 d-flex">
+        <div class="row g-4">
+            <!-- Speciality Section -->
+            <div class="col-12 col-lg-6 d-flex">
                 <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <div class="float-end">
-                            <form class="row g-2">
-                                <div class="col-auto">
-                                    <select class="form-select form-select-sm bg-light border-0">
-                                        <option>Jan</option>
-                                        <option value="1">Feb</option>
-                                        <option value="2">Mar</option>
-                                        <option value="3">Apr</option>
-                                    </select>
-                                </div>
-                                <div class="col-auto">
-                                    <input type="text" class="form-control form-control-sm bg-light rounded-2 border-0" style="width: 100px;"
-                                        placeholder="Search..">
-                                </div>
-                            </form>
-                        </div>
-                        <h5 class="card-title mb-0">Total Revenue</h5>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Speciality</h5>
+                        <select class="form-select w-auto" id="specialityRoomSelect" onchange="updateSpecialityRoomReport()">
+                            <option value="Room1">Room 1</option>
+                            <option value="Room2">Room 2</option>
+                            <option value="Room3">Room 3</option>
+                        </select>
                     </div>
                     <div class="card-body pt-2 pb-3">
-                        <div class="chart chart-md">
-                            <canvas id="chartjs-dashboard-line"></canvas>
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total Seats</h5>
+                                        <h1 class="mt-1 mb-3">20</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Available Seats</h5>
+                                        <h1 class="mt-1 mb-3">15</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total Registrations</h5>
+                                        <h1 class="mt-1 mb-3">{{$bookings}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total Sessions</h5>
+                                        <h1 class="mt-1 mb-3">44</h1>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 d-flex">
+
+            <!-- Micro-Courses Section -->
+            <div class="col-12 col-lg-6 d-flex">
                 <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <div class="float-end">
-                            <form class="row g-2">
-                                <div class="col-auto">
-                                    <select class="form-select form-select-sm bg-light border-0">
-                                        <option>Jan</option>
-                                        <option value="1">Feb</option>
-                                        <option value="2">Mar</option>
-                                        <option value="3">Apr</option>
-                                    </select>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Micro-Courses</h5>
+                <select class="form-select w-auto" id="specialityRoomSelect" onchange="updateSpecialityRoomReport()">
+                    <option value="Room1">Room 1</option>
+                    <option value="Room2">Room 2</option>
+                    <option value="Room3">Room 3</option>
+                </select>
+            </div>
+                    <div class="card-body pt-2 pb-3">
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total Seats</h5>
+                                        <h1 class="mt-1 mb-3">20</h1>
+                                    </div>
                                 </div>
-                                <div class="col-auto">
-                                    <input type="text" class="form-control form-control-sm bg-light rounded-2 border-0" style="width: 100px;"
-                                        placeholder="Search..">
+                            </div>
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Available Seats</h5>
+                                        <h1 class="mt-1 mb-3">15</h1>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total Registrations</h5>
+                                        <h1 class="mt-1 mb-3">{{$bookings}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-6">
+                                <div class="card h-100 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Total Sessions</h5>
+                                        <h1 class="mt-1 mb-3">44</h1>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h5 class="card-title mb-0">Sales by State</h5>
-                    </div>
-                    <div class="card-body px-4">
-                        <div id="usa_map" style="height:294px;"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
     </div>
 </main>
