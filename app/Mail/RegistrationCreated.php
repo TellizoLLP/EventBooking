@@ -310,6 +310,21 @@ class RegistrationCreated extends Mailable
                 ],
             ],
         ],
+        [
+            'roomName' => 'Studio 7',
+            'sessions' => [
+                [
+                    'id' => 1,
+                    'name' => 'Become an amazing presenter',
+                    'session' => 'Arabic Session',
+                    'duration' => '2 hours',
+                    'start_time' => '2:00 pm',
+                    'end_time' => '4:00 pm',
+                    'clickable' => true,
+                    'slots' => '40',
+                ],
+            ],
+        ],
     ];
 
 

@@ -37,6 +37,7 @@ Route::group(['middleware' => [AdminMiddleware::class]], function () {
                 Route::get('/room1', \App\Livewire\Admin\Reports\Rooms\Micro\Room1::class)->name('reports.rooms.micro.room1');
                 Route::get('/room2', \App\Livewire\Admin\Reports\Rooms\Micro\Room2::class)->name('reports.rooms.micro.room2');
                 Route::get('/room3', \App\Livewire\Admin\Reports\Rooms\Micro\Room3::class)->name('reports.rooms.micro.room3');
+                Route::get('/room4', \App\Livewire\Admin\Reports\Rooms\Micro\Room4::class)->name('reports.rooms.micro.room4');
                 });
         });
     });
