@@ -18,21 +18,21 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Sl No.</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Referral Method</th>
+                            <th class="text-center">Sl No.</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Phone</th>
+                            <th class="text-center">Referral Method</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($parents as $parent)
                             <tr>
-                                <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $parent->first_name }} {{ $parent->last_name }}</td>
-                                <td>{{ $parent->email }}</td>
-                                <td>{{ $parent->phone }}</td>
-                                <td>{{ $parent->referral_method }}</td>
+                                <td class="text-center" >{{ $loop->index + 1 }}</td>
+                                <td class="text-center" >{{ $parent->first_name }} {{ $parent->last_name }}</td>
+                                <td class="text-center" >{{ $parent->email }}</td>
+                                <td class="text-center" >{{ $parent->phone }}</td>
+                                <td class="text-center" >{{ $parent->referral_method }}</td>
                             </tr>
                         @endforeach
 
