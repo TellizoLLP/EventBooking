@@ -60,6 +60,7 @@
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room3')}}">Room 5</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room1')}}">Room 6</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room2')}}">Main Auditorium </a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href="{{route('reports.rooms.micro.room3')}}">Studio 7 </a> </li>
 
                 </ul>
             </li>

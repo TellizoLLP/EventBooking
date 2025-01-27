@@ -10,7 +10,7 @@ class Room3 extends Component
     public $users, $total,$search;
     public function render()
     {
-        $this->users = EventRegistrationSession::where('room_id', 3)->where('course_id', 3)
+        $this->users = EventRegistrationSession::where('room_id', 3)->where('course_id', 2)
         ->where(function ($query) {
             $query->whereHas('eventRegistration', function ($subQuery) {
                 $subQuery->where('first_name', 'like', '%' . $this->search . '%')
@@ -18,7 +18,7 @@ class Room3 extends Component
             });
         })
         ->get();
-        $this->total = EventRegistrationSession::where('room_id', 3)->where('course_id', 3)->count();
+        $this->total = EventRegistrationSession::where('room_id', 3)->where('course_id', 2)->count();
         return view('livewire.admin.reports.rooms.micro.room3');
     }
 }
