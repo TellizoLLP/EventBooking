@@ -112,7 +112,7 @@
                                     <option value="12">12</option>
                                 </select>
                                 @error('school_grade')
-                                <span class="text-red-500 text-xs">"The email field is required." </span>
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
                                 @enderror
                             </div>
                             @endif

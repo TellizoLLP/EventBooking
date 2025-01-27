@@ -389,7 +389,10 @@ class HomePage extends Component
             'school_name' => 'required_if:current_status,1',
             'school_grade' => 'required_if:current_status,1',
             'referral_method' => 'required',
-        ]);
+        ],[
+            'school_name.required_if' => 'The school name field is required.',
+            'school_grade.required_if' => 'The school grade field is required.',]
+    );
 
         if ($this->current_status == 1) {
             $this->page = 2;
