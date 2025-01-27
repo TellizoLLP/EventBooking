@@ -706,12 +706,18 @@ class HomePage extends Component
     public function selectMainSession($roomIndex, $sessionId)
     {
         $slots = getFilledSlotsMain($roomIndex, $sessionId);
+        if($roomIndex==2)
+        {
+            $this->selectedMainSessions = [];
+            $this->selectedMainSessions[$roomIndex] = $sessionId;
+        } else {
         if ($slots['filled'] >= 40) {
             return;
         } else {
             $this->selectedMainSessions = [];
             $this->selectedMainSessions[$roomIndex] = $sessionId;
         }
+    }
     }
     public function selectAdditionalSession($roomIndex, $sessionId)
     {
