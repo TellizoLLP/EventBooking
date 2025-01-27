@@ -17,7 +17,7 @@
                 </div>
                 <table class="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>Sl No.</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         @foreach ($registrations as $item )
-                        <tr>
+                        <tr class="text-center">
                             <td>{{$loop->index+1}}</td>
                             <td>{{$item->first_name}} {{$item->last_name}}</td>
                             <td>{{$item->email}}</td>
