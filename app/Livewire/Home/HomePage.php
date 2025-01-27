@@ -53,7 +53,7 @@ class HomePage extends Component
                 ],
                 [
                     'id' => 4,
-                    'name' => 'Medicine',
+                    'name' => 'Medicine - طب',
                     'session' => 'Session 4',
                     'duration' => '1 hour',
                     'start_time' => '5:30 pm',
@@ -68,7 +68,7 @@ class HomePage extends Component
             'sessions' => [
                 [
                     'id' => 1,
-                    'name' => 'Pharmacy - طب',
+                    'name' => 'Pharmacy - صيدلة',
                     'session' => 'Session 1',
                     'duration' => '1 hour',
                     'start_time' => '11:15 am',
@@ -78,7 +78,7 @@ class HomePage extends Component
                 ],
                 [
                     'id' => 2,
-                    'name' => 'Pharmacy - طب',
+                    'name' => 'Pharmacy - صيدلة',
                     'session' => 'Session 2',
                     'duration' => '1 hour',
                     'start_time' => '12:30 pm',
@@ -88,7 +88,7 @@ class HomePage extends Component
                 ],
                 [
                     'id' => 3,
-                    'name' => 'Pharmacy - طب',
+                    'name' => 'Pharmacy - صيدلة',
                     'session' => 'Session 3',
                     'duration' => '1 hour',
                     'start_time' => '4:15 pm',
@@ -98,7 +98,7 @@ class HomePage extends Component
                 ],
                 [
                     'id' => 4,
-                    'name' => 'Pharmacy - طب',
+                    'name' => 'Pharmacy - صيدلة',
                     'session' => 'Session 4',
                     'duration' => '1 hour',
                     'start_time' => '5:30 pm',
