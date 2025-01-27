@@ -287,7 +287,7 @@ class HomePage extends Component
                 [
                     'id' => 1,
                     'name' => 'Use of AI in learning',
-                    'session' => 'Arabic Session',
+                    'session' => 'Arabic & English Session',
                     'duration' => '2 hours',
                     'start_time' => '2:00 pm',
                     'end_time' => '4:00 pm',
