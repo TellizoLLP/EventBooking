@@ -666,7 +666,7 @@ class HomePage extends Component
             return;
         }
 
-        $slots = getFilledSlotsMain($roomIndex, $sessionId);
+        $slots = getFilledSlots($roomIndex, $sessionId);
         if ($slots['filled'] >= 40) {
             return;
         } else {
