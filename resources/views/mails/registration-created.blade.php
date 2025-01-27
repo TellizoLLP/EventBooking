@@ -191,8 +191,7 @@
         
         <!-- Footer -->
         <div class="footer">
-            <p>© {{ date('Y') }} Tellizo. All rights reserved.</p>
-            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <p>© {{ date('Y') }} The Youth Medical Forum. All rights reserved.</p>
         </div>
     </div>
 </body>

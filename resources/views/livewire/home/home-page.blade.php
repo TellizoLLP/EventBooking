@@ -164,7 +164,7 @@
                                 below</div>
                         </div>
                         <div class="flex gap-2">
-                            <div class="flex justify-end">
+                            <div class="flex gap-2 justify-end">
                                 <button @click="$wire.backPageOne()" wire:loading.attr="disabled"
                                     class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#0b0202] disabled:bg-[#285a496a] text-white rounded-lg">
                                     Back
@@ -206,7 +206,7 @@
                                     <div class=" session-card 
                                       
         {{ !$session['clickable'] || in_array($session['id'], $disabledTimeSlots) || ($session['slots'] != 0 && $slotsinline['filled'] >= 40) ? 'opacity-50 cursor-not-allowed bg-gray-300' : '' }}
-                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }}
+                            {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700 cursor-pointer' }}
                             {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] !== $session['id'] ? 'bg-white' : '' }}
                             w-full  rounded-lg shadow p-4"
                                         wire:click="selectSession({{ $roomIndex }}, {{ $session['id'] }})"
@@ -340,7 +340,7 @@
                                                 @php
                                                 $slots = getFilledSlots($roomIndex, $session['id']);
                                                 @endphp
-                                                <p>{{ $slots['filled'] }}/40</p>
+                                                <p>{{ $slots['filled'] }}/{{$session['slots']}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -383,8 +383,7 @@
                                     below</div>
                             </div>
                             <div class="flex gap-2">
-
-                                <div class="flex justify-end">
+                                <div class="flex gap-2 justify-end">
                                     <div class="flex justify-end">
                                         <button @click="$wire.backPageTwo()" wire:loading.attr="disabled"
                                             class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#0b0202] disabled:bg-[#285a496a] text-white rounded-lg">
@@ -499,7 +498,7 @@
                         </div>
                         <div class="flex gap-2">
 
-                            <div class="flex justify-end">
+                            <div class="flex gap-2 justify-end">
                                 <div class="flex justify-end">
                                     <button @click="$wire.backPageThree()" wire:loading.attr="disabled"
                                         class="px-5 py-2.5 cursor-pointer h-fit text-sm antialiased font-semibold bg-[#0b0202] disabled:bg-[#285a496a] text-white rounded-lg">
