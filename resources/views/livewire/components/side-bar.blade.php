@@ -39,7 +39,7 @@
             <li class="sidebar-item  ">
                 <a data-bs-target="#pages" data-bs-toggle="collapse" class="sidebar-link collapsed">
                     <i class="align-middle" data-feather="credit-card"></i>
-                    <span class="align-middle">Rooms</span>
+                    <span class="align-middle">Medzone-Experience </span>
                 </a>
                 <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item "><a class='sidebar-link' href="{{route('reports.rooms.four')}}">Room 4</a> </li>
@@ -47,7 +47,29 @@
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 6</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Studio 3</a> </li>
                     <li class="sidebar-item  "><a class='sidebar-link' href=''>Studio 7</a> </li>
-                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Main Auditorium</a> </li>
+                </ul>
+            </li>
+            <li class="sidebar-item  ">
+                <a data-bs-target="#micro" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="credit-card"></i>
+                    <span class="align-middle">Micro-Course </span>
+                </a>
+                <ul id="micro" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item "><a class='sidebar-link' href="{{route('reports.rooms.four')}}">Room 4</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 5</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Room 6</a> </li>
+                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Main Auditorium </a> </li>
+                    
+                </ul>
+            </li>
+            <li class="sidebar-item  ">
+                <a data-bs-target="#additional" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="credit-card"></i>
+                    <span class="align-middle">Additional Sessions</span>
+                </a>
+                <ul id="additional" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item  "><a class='sidebar-link' href=''>Main Auditorium </a> </li>
+                    
                 </ul>
             </li>
             <li class="sidebar-item">

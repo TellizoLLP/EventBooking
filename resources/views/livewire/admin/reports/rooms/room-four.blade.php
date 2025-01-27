@@ -23,28 +23,36 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Current Status</th>
-                            <th>School Name</th>
-                            <th>School Grade</th>
-                            <th>Referral Method</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <td></td>
+                            <td>{{$loop->index+1}}</td>
                             <td>{{ $user->eventRegistration?->first_name }} {{$user->eventRegistration?->last_name}}</td>
                             <td>{{ $user->eventRegistration?->email }}</td>
                             <td>{{ $user->eventRegistration?->phone }}</td>
-                            <td>{{ $user->eventRegistration?->phone }}</td>
-                           
-                            <td></td>
+                            <td> <span class="badge {{ $user->eventRegistration?->current_status == 1 ? 'bg-success' : 'bg-warning' }}">{{ $user->eventRegistration?->current_status == 1 ? 'Student' : 'Parent' }}</span></td>
                         </tr>
                         @endforeach
 
 
                     </tbody>
                 </table>
+                <div class="d-flex">
+                    <div class="mt-3 p-3">
+                        <strong>Students:</strong> {{ $students }}
+                    </div>
+                    <div class="mt-3 p-3">
+                        <strong> Parents:</strong> {{ $parents }}
+                    </div>
+                </div>
+
+                <div class="mt-3 px-3">
+                    <strong> Total:</strong> {{ $total }}
+                </div>
             </div>
         </div>
+
     </div>
 </main>
