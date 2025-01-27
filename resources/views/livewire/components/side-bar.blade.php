@@ -72,12 +72,7 @@
                     
                 </ul>
             </li>
-            <li class="sidebar-item">
-                <a class='sidebar-link' href="{{route('reports.sessions')}}">
-                    <i class="align-middle" data-feather="play-circle"></i>
-                    <span class="align-middle">Sessions</span>
-                </a>
-            </li>
+           
             <li class="sidebar-item">
                 <a class='sidebar-link' href="{{route('reports.students')}}">
                     <i class="align-middle" data-feather="book"></i>

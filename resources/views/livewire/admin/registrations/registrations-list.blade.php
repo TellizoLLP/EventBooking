@@ -109,38 +109,54 @@
                                 @endforeach
                                 @endif
 
-                                {{-- Loop through $itemsAdditional --}}
-                                @if ($itemsAdditional->count() > 0)
+                                {{-- Loop through $itemsAdditional (Additional Sessions) --}}
+                                @if (count($itemsAdditional) > 0)
                                 @foreach ($itemsAdditional as $session)
                                 @php
-                                $roomIndex = $session->room_id;
-                                $selectedSession = collect($Additionalrooms[$roomIndex]['sessions'])->firstWhere('id', $session->session_id);
+                                // Ensure $session is treated as an array
+                                $roomIndex = $session['room_id'] ?? null;
+
+                                // Safeguard against invalid room index
+                                $selectedRoom = $roomIndex !== null && isset($Additionalrooms[$roomIndex])
+                                ? $Additionalrooms[$roomIndex]
+                                : null;
+
+                                // Extract session details
+                                $selectedSession = $selectedRoom
+                                ? collect($selectedRoom['sessions'])->firstWhere('id', $session['session_id'])
+                                : null;
+
+                                // Define session details with fallback values
                                 $sessionDetails = $selectedSession
                                 ? [
-                                'roomName' => $Additionalrooms[$roomIndex]['roomName'] ?? 'Unknown Room',
+                                'roomName' => $selectedRoom['roomName'] ?? 'Unknown Room',
                                 'sessionName' => $selectedSession['name'] ?? 'Unknown Session',
                                 'startTime' => $selectedSession['start_time'] ?? 'N/A',
                                 'endTime' => $selectedSession['end_time'] ?? 'N/A',
                                 ]
-                                : null;
+                                : ['roomName' => 'Unknown Room', 'sessionName' => 'Unknown Session', 'startTime' => 'N/A', 'endTime' => 'N/A'];
                                 @endphp
 
+
                                 @if ($sessionDetails)
-                                <p> {{ $sessionDetails['roomName'] }}, Session: {{ $sessionDetails['sessionName'] }} ({{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }})</p>
+                                <p >{{ $sessionDetails['roomName'] }} , Session :  {{ $sessionDetails['sessionName'] }} {{ $sessionDetails['startTime'] }} - {{ $sessionDetails['endTime'] }}</p>
                                 @else
                                 <p>Room: Unknown, Session: Unknown</p>
                                 @endif
+
                                 @endforeach
                                 @endif
-                            </td>
-
-
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
             </div>
         </div>
+        </td>
+
+
+        </tr>
+        @endforeach
+
+        </tbody>
+        </table>
+    </div>
+    </div>
     </div>
 </main>
