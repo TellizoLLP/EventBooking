@@ -57,11 +57,12 @@ class EventRegistrationExport implements FromView,WithEvents
         return [
 
             AfterSheet::class    => function(AfterSheet $event) {
-                $event->sheet->getDelegate()->getRowDimension('1')->setRowHeight(20);
                 $event->sheet->getDelegate()->getColumnDimension('A')->setWidth(10);
-                $event->sheet->getDelegate()->getColumnDimension('B')->setWidth(50);
-                $event->sheet->getDelegate()->getColumnDimension('C')->setWidth(30);
-                $event->sheet->getDelegate()->getColumnDimension('D')->setWidth(30);
+                $event->sheet->getDelegate()->getColumnDimension('B')->setWidth(20);
+                $event->sheet->getDelegate()->getColumnDimension('C')->setWidth(20);
+                $event->sheet->getDelegate()->getColumnDimension('D')->setWidth(20);
+                $event->sheet->getDelegate()->getColumnDimension('D')->setWidth(10);
+                $event->sheet->getDelegate()->getColumnDimension('F')->setWidth(80);
             },
 
         ];
