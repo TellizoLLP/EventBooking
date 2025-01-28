@@ -56,6 +56,28 @@
     <script src="{{asset('assets/js/datatables.js')}}"></script>
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+    <script src="{{asset('assets/js/sweetalert.js')}}"></script>
+    <script>
+        document.addEventListener('livewire:init', () => {
+           // Listen for Livewire events to trigger the delete confirmation
+        Livewire.on('triggerDelete', (id) => {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Call the Livewire delete method if confirmed
+                    Livewire.dispatch('deleteConfirmed', id);
+                }
+            });
+        });
+        });
+    </script>
     <script>
         document.addEventListener('livewire:init', () => {
             Livewire.on('notify', (event) => {

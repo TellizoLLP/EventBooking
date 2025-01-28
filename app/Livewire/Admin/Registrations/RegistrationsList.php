@@ -3,12 +3,15 @@
 namespace App\Livewire\Admin\Registrations;
 
 use App\Models\EventRegistration;
+use App\Models\EventRegistrationSession;
 use Livewire\Component;
 
 class RegistrationsList extends Component
 
 {
     public $registrations, $search = '';
+    
+    protected $listeners = ['deleteConfirmed'];
 
     public $rooms = [
         [
@@ -386,7 +389,25 @@ class RegistrationsList extends Component
                 $query->where('first_name', 'like', '%' . $this->search . '%')
                     ->orWhere('last_name', 'like', '%' . $this->search . '%');
             })
-            ->get();
+            ->latest()->get();
         return view('livewire.admin.registrations.registrations-list');
     }
+
+    public function confirmDelete($id)
+    {
+        $this->dispatch('triggerDelete', $id);
+    }
+
+     /* expense category delete */
+     public function deleteConfirmed($id)
+     {   
+       $item = EventRegistration::find($id);
+       if($item){
+       $sessions = EventRegistrationSession::where('event_registration_id',$id)->get();
+        foreach($sessions as $row) {
+            $row->delete();
+        }   
+        $item->delete();
+    }
+}
 }
