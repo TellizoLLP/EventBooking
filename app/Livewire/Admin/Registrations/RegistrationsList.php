@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Registrations;
 use App\Models\EventRegistration;
 use App\Models\EventRegistrationSession;
 use Livewire\Component;
+use App\Exports\EventRegistrationExport;
+use Excel;
 
 class RegistrationsList extends Component
 
@@ -410,4 +412,10 @@ class RegistrationsList extends Component
         $item->delete();
     }
 }
+
+    /* export to excel */
+    public function downloadFile()
+    {
+        return Excel::download(new EventRegistrationExport($this->rooms, $this->Mainrooms, $this->Additionalrooms), 'participants_list.xlsx');
+    }
 }
