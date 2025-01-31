@@ -7,18 +7,23 @@ use App\Models\EventRegistrationSession;
 
 class Room4 extends Component
 {
-    public $users, $students,$parents,$total,$search;
+    public $users, $students,$parents,$total,$search, $session_filter;
 
     public function render()
     {
-        $this->users = EventRegistrationSession::where('room_id', 4)->where('course_id', 1)
+        $query = EventRegistrationSession::where('room_id', 4)->where('course_id', 1)
         ->where(function ($query) {
             $query->whereHas('eventRegistration', function ($subQuery) {
                 $subQuery->where('first_name', 'like', '%' . $this->search . '%')
                     ->orWhere('phone', 'like', '%' . $this->search . '%');
             });
-        })
-        ->get();
+        });
+        
+        if($this->session_filter!='') {
+            $query = $query->where('session_id',$this->session_filter);
+        }
+
+        $this->users = $query->get();
 
         $this->students = EventRegistrationSession::where('room_id', 4)
         ->where('course_id', 1)
