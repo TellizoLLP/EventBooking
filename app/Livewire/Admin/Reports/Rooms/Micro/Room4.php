@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Admin\Reports\Rooms\Micro;
 
+use App\Exports\Micro\Room4Report;
 use Livewire\Component;
 use App\Models\EventRegistrationSession;
+use Excel;
 
 class Room4 extends Component
 {
@@ -21,4 +23,9 @@ class Room4 extends Component
         $this->total = EventRegistrationSession::where('room_id', 4)->where('course_id', 2)->count();
         return view('livewire.admin.reports.rooms.micro.room4');
     }
+     /* export to excel */
+     public function downloadFile()
+     {
+         return Excel::download(new Room4Report($this->users), 'Roomwise_report.xlsx');
+     }
 }
