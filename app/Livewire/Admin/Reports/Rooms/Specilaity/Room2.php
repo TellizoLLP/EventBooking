@@ -4,6 +4,8 @@ namespace App\Livewire\Admin\Reports\Rooms\Specilaity;
 
 use Livewire\Component;
 use App\Models\EventRegistrationSession;
+use Excel;
+use App\Exports\Specilaity\Room2Report;
 
 class Room2 extends Component
 {
@@ -36,4 +38,9 @@ class Room2 extends Component
         $this->total = $this->students + $this->parents;
         return view('livewire.admin.reports.rooms.specilaity.room2');
     }
+     /* export to excel */
+     public function downloadFile()
+     {
+         return Excel::download(new Room2Report($this->users), 'Roomwise_report.xlsx');
+     }
 }
