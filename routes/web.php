@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', \App\Livewire\Home\HomePage::class)->name('home');
+Route::get('/edit/{id}', \App\Livewire\Home\HomePage::class)->name('home.edit')->middleware(AdminMiddleware::class);
 
 Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
 Route::group(['middleware' => [AdminMiddleware::class]], function () {

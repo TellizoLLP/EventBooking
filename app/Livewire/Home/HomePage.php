@@ -15,7 +15,7 @@ class HomePage extends Component
     public $selectedSessions = [];
     public $selectedMainSessions = [];
     public $selectedAdditionalSessions = [];
-    public $disabledTimeSlots = [], $current_registration_id = '';
+    public $disabledTimeSlots = [], $current_registration_id = '', $editingRegistration;
 
     public $rooms = [
         [
@@ -393,25 +393,82 @@ class HomePage extends Component
         return view('livewire.home.home-page');
     }
 
+    public function mount($id = null)
+    {
+        $registration = EventRegistration::with('eventRegistrationSessions')->where('id', $id)->first();
+        if ($registration) {
+            $this->editingRegistration = $registration;
+            $this->current_registration_id = $registration->id;
+            $this->first_name = $registration->first_name;
+            $this->last_name = $registration->last_name;
+            $this->email = $registration->email;
+            $this->phone = $registration->phone;
+            $this->current_status = $registration->current_status;
+            $this->school_grade = $registration->school_grade;
+            $this->school_name = $registration->school_name;
+            $this->referral_method = $registration->referral_method;
+
+            $items = \App\Models\EventRegistrationSession::where('event_registration_id',$registration->id)
+                ->latest()
+                ->get();
+            foreach($items as $item)
+            {
+                if($item->course_id == 1){
+                    $this->selectSession($item->room_id,$item->session_id);
+                }
+                elseif($item->course_id == 2){
+                    $this->selectMainSession($item->room_id,$item->session_id);
+                }
+                else{
+                    $this->selectAdditionalSession($item->room_id,$item->session_id);
+                }
+            }
+        }
+        
+        
+        
+    }
+
     public function pageOneSave()
     {
-        $this->validate(
-            [
-                'first_name' => 'required|string',
-                'last_name' => 'required|string',
-                'email' => 'required|email|unique:event_registrations,email',
-                'phone' => 'required|string',
-                'current_status' => 'required',
-                'school_name' => 'required_if:current_status,1',
-                'school_grade' => 'required_if:current_status,1',
-                'referral_method' => 'required',
-            ],
-            [
-                'school_name.required_if' => 'The school name field is required.',
-                'school_grade.required_if' => 'The school grade field is required.',
-            ]
-        );
-
+        if($this->editingRegistration){
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email,' . $this->editingRegistration->id,
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'email.unique' => 'The email has already been taken.',
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+        }   
+        else{
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email',
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+    
+        }
         if ($this->current_status == 1) {
             $this->page = 2;
         } else {
@@ -421,32 +478,73 @@ class HomePage extends Component
 
     public function pageTwoSave()
     {
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:event_registrations,email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required',
-        ]);
-
+        if($this->editingRegistration){
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email,' . $this->editingRegistration->id,
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'email.unique' => 'The email has already been taken.',
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+        }   
+        else{
+            $this->validate([
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:event_registrations,email',
+                'phone' => 'required|string',
+                'current_status' => 'required',
+                'school_name' => 'required_if:current_status,1',
+                'school_grade' => 'required_if:current_status,1',
+                'referral_method' => 'required',
+            ]);
+        }
         $this->page = 3;
     }
 
     public function pageThreeSave()
     {
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:event_registrations,email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required',
-        ]);
+        if($this->editingRegistration){
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email,' . $this->editingRegistration->id,
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'email.unique' => 'The email has already been taken.',
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+        }   
+        else{
+            $this->validate([
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:event_registrations,email',
+                'phone' => 'required|string',
+                'current_status' => 'required',
+                'school_name' => 'required_if:current_status,1',
+                'school_grade' => 'required_if:current_status,1',
+                'referral_method' => 'required',
+            ]);
+        }
 
         $this->page = 5;
     }
@@ -454,16 +552,37 @@ class HomePage extends Component
 
     public function backPageOne()
     {
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:event_registrations,email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required',
-        ]);
+        if($this->editingRegistration){
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email,' . $this->editingRegistration->id,
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'email.unique' => 'The email has already been taken.',
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+        }   
+        else{
+            $this->validate([
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:event_registrations,email',
+                'phone' => 'required|string',
+                'current_status' => 'required',
+                'school_name' => 'required_if:current_status,1',
+                'school_grade' => 'required_if:current_status,1',
+                'referral_method' => 'required',
+            ]);
+        }
 
         $this->page = 1;
     }
@@ -471,32 +590,74 @@ class HomePage extends Component
 
     public function backPageTwo()
     {
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:event_registrations,email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required',
-        ]);
+        if($this->editingRegistration){
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email,' . $this->editingRegistration->id,
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'email.unique' => 'The email has already been taken.',
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+        }   
+        else{
+            $this->validate([
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:event_registrations,email',
+                'phone' => 'required|string',
+                'current_status' => 'required',
+                'school_name' => 'required_if:current_status,1',
+                'school_grade' => 'required_if:current_status,1',
+                'referral_method' => 'required',
+            ]);
+        }
 
         $this->page = 2;
     }
 
     public function backPageThree()
     {
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:event_registrations,email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required',
-        ]);
+        if($this->editingRegistration){
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email,' . $this->editingRegistration->id,
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'email.unique' => 'The email has already been taken.',
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+        }   
+        else{
+            $this->validate([
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:event_registrations,email',
+                'phone' => 'required|string',
+                'current_status' => 'required',
+                'school_name' => 'required_if:current_status,1',
+                'school_grade' => 'required_if:current_status,1',
+                'referral_method' => 'required',
+            ]);
+        }
         if ($this->current_status == 1) {
             $this->page = 3;
         } else {
@@ -505,19 +666,43 @@ class HomePage extends Component
     }
     public function save()
     {
-        $this->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:event_registrations,email',
-            'phone' => 'required|string',
-            'current_status' => 'required',
-            'school_name' => 'required_if:current_status,1',
-            'school_grade' => 'required_if:current_status,1',
-            'referral_method' => 'required',
-        ]);
-
+        if($this->editingRegistration){
+            $this->validate(
+                [
+                    'first_name' => 'required|string',
+                    'last_name' => 'required|string',
+                    'email' => 'required|email|unique:event_registrations,email,' . $this->editingRegistration->id,
+                    'phone' => 'required|string',
+                    'current_status' => 'required',
+                    'school_name' => 'required_if:current_status,1',
+                    'school_grade' => 'required_if:current_status,1',
+                    'referral_method' => 'required',
+                ],
+                [
+                    'email.unique' => 'The email has already been taken.',
+                    'school_name.required_if' => 'The school name field is required.',
+                    'school_grade.required_if' => 'The school grade field is required.',
+                ]
+            );
+        }   
+        else{
+            $this->validate([
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:event_registrations,email',
+                'phone' => 'required|string',
+                'current_status' => 'required',
+                'school_name' => 'required_if:current_status,1',
+                'school_grade' => 'required_if:current_status,1',
+                'referral_method' => 'required',
+            ]);
+        }
 
         $eventRegistration = new EventRegistration();
+        if ($this->editingRegistration) {
+            $eventRegistration = $this->editingRegistration;
+            EventRegistrationSession::where('event_registration_id', $this->editingRegistration->id)->delete();
+        }
         $eventRegistration->first_name = $this->first_name;
         $eventRegistration->last_name = $this->last_name;
         $eventRegistration->email = $this->email;
@@ -666,7 +851,7 @@ class HomePage extends Component
             return;
         }
 
-        $slots = getFilledSlots($roomIndex, $sessionId);
+        $slots = getFilledSlots($roomIndex, $sessionId,$this->editingRegistration);
         if ($slots['filled'] >= 40) {
             return;
         } else {
@@ -705,34 +890,34 @@ class HomePage extends Component
     }
     public function selectMainSession($roomIndex, $sessionId)
     {
-        $slots = getFilledSlotsMain($roomIndex, $sessionId);
-        if($roomIndex==2)
-        {
+        $slots = getFilledSlotsMain($roomIndex, $sessionId,$this->editingRegistration);
+        if ($roomIndex == 2) {
             $this->selectedMainSessions = [];
             $this->selectedMainSessions[$roomIndex] = $sessionId;
         } else {
-        if ($slots['filled'] >= 40) {
-            return;
-        } else {
-            $this->selectedMainSessions = [];
-            $this->selectedMainSessions[$roomIndex] = $sessionId;
+            if ($slots['filled'] >= 40) {
+                return;
+            } else {
+                $this->selectedMainSessions = [];
+                $this->selectedMainSessions[$roomIndex] = $sessionId;
+            }
         }
-    }
+        $this->selectedAdditionalSessions = [];
     }
     public function selectAdditionalSession($roomIndex, $sessionId)
     {
-     //   $this->selectedAdditionalSessions = [];
-            if ($this->current_status == 1) {
-                foreach ($this->selectedSessions as $existingRoomIndex => $existingSessionId) {
-                    if (isset($existingSessionId) && ($existingSessionId-1) === $roomIndex) {
-                        $this->dispatch('alert', [
-                            'type' => 'error',
-                            'message' => 'This session is already selected for another room!',
-                        ]);
-                        return; 
-                    }
+        //   $this->selectedAdditionalSessions = [];
+        if ($this->current_status == 1) {
+            foreach ($this->selectedSessions as $existingRoomIndex => $existingSessionId) {
+                if (isset($existingSessionId) && ($existingSessionId - 1) === $roomIndex) {
+                    $this->dispatch('alert', [
+                        'type' => 'error',
+                        'message' => 'This session is already selected for another room!',
+                    ]);
+                    return;
                 }
             }
-            $this->selectedAdditionalSessions[$roomIndex] = $sessionId;
+        }
+        $this->selectedAdditionalSessions[$roomIndex] = $sessionId;
     }
 }

@@ -198,7 +198,7 @@
                                 <div class="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
                                     @foreach ($room['sessions'] as $session)
                                     @php
-                                    $slotsinline = getFilledSlots($roomIndex, $session['id']);
+                                    $slotsinline = getFilledSlots($roomIndex, $session['id'],$editingRegistration);
                                     @endphp
 
                                     <!-- <div class="w-full bg-{{ $session['clickable'] ? '[#285a49]' : 'white' }} rounded-lg shadow p-4"> -->
@@ -338,7 +338,7 @@
                                                         d="M4 18v3h3v-3h10v3h3v-6H4zm15-8h3v3h-3zM2 10h3v3H2zm15 3H7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2z" />
                                                 </svg>
                                                 @php
-                                                $slots = getFilledSlots($roomIndex, $session['id']);
+                                                $slots = getFilledSlots($roomIndex, $session['id'],$editingRegistration);
                                                 @endphp
                                                 <p>{{ $slots['filled'] }}/{{$session['slots']}}</p>
                                             </div>
@@ -413,7 +413,7 @@
                                     @foreach ($Mainrooms as $mainRoomIndex => $mainroom)
                                     @foreach ($mainroom['sessions'] as $mainSession)
                                     @php
-                                    $slots = getFilledSlotsMain($mainRoomIndex, $mainSession['id']);
+                                    $slots = getFilledSlotsMain($mainRoomIndex, $mainSession['id'],$editingRegistration);
                                     @endphp
                                     <div class="session-card 
             {{ isset($selectedMainSessions[$mainRoomIndex]) && $selectedMainSessions[$mainRoomIndex] == $mainSession['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }} 
@@ -460,6 +460,7 @@
                                                 $slots = getFilledSlotsMain(
                                                 $mainRoomIndex,
                                                 $mainSession['id'],
+                                                $editingRegistration
                                                 );
                                                 @endphp
                                                 <p>{{ $slots['filled'] }}/40</p>
