@@ -23,6 +23,10 @@
                             <option value="4">Session 4</option>
                         </select>
                     </div>
+
+                    <a wire:click="downloadFile()" class="btn btn-icon btn-3 btn-primary text-white mb-0">
+                <i class="fa fa-file-excel-o me-2"></i> {{ $lang->data['export_excel'] ?? 'Export Excel' }}
+            </a>
                 </div>
                 <table class="table table-bordered">
                     <thead>
