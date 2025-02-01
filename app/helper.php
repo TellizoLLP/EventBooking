@@ -1,11 +1,11 @@
 <?php
- function getFilledSlots($roomId, $sessionId,$editingBooking = null)
+ function getFilledSlots($roomId, $sessionId,$editingBooking = null,$slots = 40)
  {
      // Define the total number of slots for the session (e.g., 40)
-     $totalSlots = 40 ;
+     $totalSlots = $slots ;
  
      // Count how many registrations exist for the given room and session
-     $filledSlotsQuery = \App\Models\EventRegistrationSession::where('room_id', $roomId)
+    $filledSlotsQuery = \App\Models\EventRegistrationSession::where('room_id', $roomId)
          ->where('session_id', $sessionId)
          ->where('course_id', 1);
     if($editingBooking){
@@ -23,10 +23,10 @@
      ];
  }
 
- function getFilledSlotsMain($roomId, $sessionId,$editingBooking = null )
+ function getFilledSlotsMain($roomId, $sessionId,$editingBooking = null,$slots = 40 )
  {
      // Define the total number of slots for the session (e.g., 40)
-     $totalSlots = 40 ;
+     $totalSlots = $slots ;
  
      // Count how many registrations exist for the given room and session
      $filledSlotsQuery = \App\Models\EventRegistrationSession::where('room_id', $roomId)

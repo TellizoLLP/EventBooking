@@ -413,7 +413,7 @@
                                     @foreach ($Mainrooms as $mainRoomIndex => $mainroom)
                                     @foreach ($mainroom['sessions'] as $mainSession)
                                     @php
-                                    $slots = getFilledSlotsMain($mainRoomIndex, $mainSession['id'],$editingRegistration);
+                                    $slots = getFilledSlotsMain($mainRoomIndex, $mainSession['id'],$editingRegistration,$mainSession['slots']);
                                     @endphp
                                     <div class="session-card 
             {{ isset($selectedMainSessions[$mainRoomIndex]) && $selectedMainSessions[$mainRoomIndex] == $mainSession['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }} 

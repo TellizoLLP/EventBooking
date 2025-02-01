@@ -29,7 +29,7 @@ class HomePage extends Component
                     'start_time' => '11:15 am',
                     'end_time' => '12:15 pm',
                     'clickable' => true,
-                    'slots' => '40',
+                    'slots' => '50',
                 ],
                 [
                     'id' => 2,
@@ -39,7 +39,7 @@ class HomePage extends Component
                     'start_time' => '12:30 pm',
                     'end_time' => '01:30 pm',
                     'clickable' => true,
-                    'slots' => '40',
+                    'slots' => '50',
                 ],
                 [
                     'id' => 3,
@@ -49,7 +49,7 @@ class HomePage extends Component
                     'start_time' => '4:15 pm',
                     'end_time' => '5:15 pm',
                     'clickable' => true,
-                    'slots' => '40',
+                    'slots' => '50',
                 ],
                 [
                     'id' => 4,
@@ -59,7 +59,7 @@ class HomePage extends Component
                     'start_time' => '5:30 pm',
                     'end_time' => '6:30 pm',
                     'clickable' => true,
-                    'slots' => '40',
+                    'slots' => '50',
                 ],
             ],
         ],
@@ -262,7 +262,7 @@ class HomePage extends Component
                     'start_time' => '2:00 pm',
                     'end_time' => '4:00 pm',
                     'clickable' => true,
-                    'slots' => '40',
+                    'slots' => '50',
                 ],
             ],
         ],
@@ -851,8 +851,10 @@ class HomePage extends Component
             return;
         }
 
-        $slots = getFilledSlots($roomIndex, $sessionId,$this->editingRegistration);
-        if ($slots['filled'] >= 40) {
+        $selectedSession = collect($this->rooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+        $maxSlots = (int)$selectedSession['slots'];
+        $slots = getFilledSlots($roomIndex, $sessionId,$this->editingRegistration,$maxSlots);
+        if ($slots['filled'] >= $maxSlots) {
             return;
         } else {
             // Find the selected session details
@@ -890,12 +892,14 @@ class HomePage extends Component
     }
     public function selectMainSession($roomIndex, $sessionId)
     {
-        $slots = getFilledSlotsMain($roomIndex, $sessionId,$this->editingRegistration);
+        $selectedSession = collect($this->Mainrooms[$roomIndex]['sessions'])->firstWhere('id', $sessionId);
+        $maxSlots = (int)$selectedSession['slots'];
+        $slots = getFilledSlotsMain($roomIndex, $sessionId,$this->editingRegistration,$maxSlots);
         if ($roomIndex == 2) {
             $this->selectedMainSessions = [];
             $this->selectedMainSessions[$roomIndex] = $sessionId;
         } else {
-            if ($slots['filled'] >= 40) {
+            if ($slots['filled'] >= $maxSlots) {
                 return;
             } else {
                 $this->selectedMainSessions = [];
