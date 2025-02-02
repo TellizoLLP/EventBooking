@@ -205,7 +205,7 @@
                                     <!-- <div class="w-full hover:bg-[#1c4a38] bg-white rounded-lg shadow p-4"> -->
                                     <div class=" session-card 
                                       
-        {{ !$session['clickable'] || in_array($session['id'], $disabledTimeSlots) || ($session['slots'] != 0 && $slotsinline['filled'] >= 40) ? 'opacity-50 cursor-not-allowed bg-gray-300' : '' }}
+        {{ !$session['clickable'] || in_array($session['id'], $disabledTimeSlots) || ($session['slots'] != 0 && $slotsinline['filled'] >= $session['slots']) ? 'opacity-50 cursor-not-allowed bg-gray-300' : '' }}
                             {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] == $session['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700 cursor-pointer' }}
                             {{ isset($selectedSessions[$roomIndex]) && $selectedSessions[$roomIndex] !== $session['id'] ? 'bg-white' : '' }}
                             w-full  rounded-lg shadow p-4"
@@ -419,7 +419,7 @@
             {{ isset($selectedMainSessions[$mainRoomIndex]) && $selectedMainSessions[$mainRoomIndex] == $mainSession['id'] ? 'bg-[#285a49] text-white' : 'bg-white text-neutral-700' }} 
           
             w-full rounded-lg shadow p-4
-            {{ $mainSession['slots'] != 0 && $slots['filled'] >= 40 ? 'opacity-50 bg-gray-300 cursor-not-allowed' : '' }}"
+            {{ $mainSession['slots'] != 0 && $slots['filled'] >= $mainSession['slots'] ? 'opacity-50 bg-gray-300 cursor-not-allowed' : '' }}"
                                         wire:click="selectMainSession({{ $mainRoomIndex }}, {{ $mainSession['id'] }})"
                                         style="transition: background-color 0.3s;">
 
