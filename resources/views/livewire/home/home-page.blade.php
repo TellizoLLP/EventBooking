@@ -463,7 +463,7 @@
                                                 $editingRegistration
                                                 );
                                                 @endphp
-                                                <p>{{ $slots['filled'] }}/40</p>
+                                                <p>{{ $slots['filled'] }}/{{$mainSession['slots']}}</p>
                                                 @endif
                                             </div>
                                         </div>
